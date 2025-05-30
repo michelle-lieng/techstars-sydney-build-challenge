@@ -50,7 +50,8 @@ class FounderProfileDB:
             create_table_query = """
             CREATE TABLE IF NOT EXISTS founder_profile (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255) NOT NULL,
+                firstname VARCHAR(255) NOT NULL,
+                lastname VARCHAR(255) NOT NULL,
                 linkedin_url VARCHAR(255),
                 city VARCHAR(100),
                 startup_name VARCHAR(255),
@@ -72,7 +73,7 @@ class FounderProfileDB:
         except Error as e:
             print(f"Error creating founder profile table: {e}")
         
-    def insertFounder(self, name, linkedin_url=None, city=None, startup_name=None, 
+    def insertFounder(self, firstname, lastname, linkedin_url=None, city=None, startup_name=None, 
                       profile_completeness=0, tags=None, gender=None, ethnicity=None, 
                       data_source=None):
         try:
@@ -85,13 +86,13 @@ class FounderProfileDB:
 
             insert_query = """
             INSERT INTO founder_profile (
-                name, linkedin_url, city, startup_name, profile_completeness,
+                firstname, lastname, linkedin_url, city, startup_name, profile_completeness,
                 tags, gender, ethnicity, data_source
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
 
             values = (
-                name, linkedin_url, city, startup_name, profile_completeness, tags_json, gender, ethnicity, data_source
+                firstname, lastname, linkedin_url, city, startup_name, profile_completeness, tags_json, gender, ethnicity, data_source
             )
 
             cursor.execute(insert_query, values)
