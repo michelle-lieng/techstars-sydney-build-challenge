@@ -149,3 +149,60 @@ class FounderProfileDB:
             print(f"Error fetching all founders: {e}")
             return []
     
+    def getFounderById(self. founder_id):
+        try:
+            if not self.connection or not self.connection.is_connected():
+                self.connect
+        
+            cursor = self.connection.cursor(dictionary=True)
+
+            select_query = "SELECT * FROM founder_profile WHERE id = %s"
+            cursor.execute(select_query, (founder_id))
+
+            founder = cursor.fetchone()
+            cursor.close()
+
+            if founder and founder['tages']:
+                founder['tags'] = json.loads(founder['tags'])
+
+            return founder
+
+        except Error as e:
+            print(f"Error retrieving founder profile: {e}")
+            return None
+    
+    def updateFounder(self, founder_id, **kwargs):
+        try:
+            if not self.connection or not self.connection.is_connected():
+                self.connect()
+                
+            cursor = self.connection.cursor()
+            
+            # Convert tags list to JSON string if provided
+            if 'tags' in kwargs and kwargs['tags']:
+                kwargs['tags'] = json.dumps(kwargs['tags'])
+                
+            # Build update query dynamically based on provided fields
+            set_clause = ", ".join([f"{key} = %s" for key in kwargs.keys()])
+            values = list(kwargs.values())
+            values.append(founder_id)  # Add founder_id for WHERE clause
+            
+            # SQL query to update a founder profile
+            update_query = f"UPDATE founder_profile SET {set_clause} WHERE id = %s"
+            
+            cursor.execute(update_query, values)
+            self.connection.commit()
+            
+            success = cursor.rowcount > 0
+            cursor.close()
+            
+            if success:
+                print(f"Founder profile with ID {founder_id} updated successfully")
+            else:
+                print(f"No founder profile found with ID {founder_id}")
+                
+            return success
+            
+        except Error as e:
+            print(f"Error updating founder profile: {e}")
+            return False
