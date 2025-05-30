@@ -178,16 +178,13 @@ class FounderProfileDB:
                 
             cursor = self.connection.cursor()
             
-            # Convert tags list to JSON string if provided
             if 'tags' in kwargs and kwargs['tags']:
                 kwargs['tags'] = json.dumps(kwargs['tags'])
                 
-            # Build update query dynamically based on provided fields
             set_clause = ", ".join([f"{key} = %s" for key in kwargs.keys()])
             values = list(kwargs.values())
-            values.append(founder_id)  # Add founder_id for WHERE clause
+            values.append(founder_id)
             
-            # SQL query to update a founder profile
             update_query = f"UPDATE founder_profile SET {set_clause} WHERE id = %s"
             
             cursor.execute(update_query, values)
