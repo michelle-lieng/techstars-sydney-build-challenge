@@ -1,4 +1,29 @@
+import React, { useState, useEffect } from 'react'
+import FounderCard  from '../components/FounderCard';
+
 export default function Search() {
+    const [founders, setFounders] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('api/search')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setFounders(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+                setError(error);
+                setLoading(false);
+            })
+    }, []);
     return (
         <main>
             <div className="container mt-4">
@@ -113,14 +138,31 @@ export default function Search() {
                                 </div>
                             </div>
                             <div className="card-body">
-                                <div id="search-results" className="row">
-                                    <div className="col-12 text-center py-5">
-                                        <div className="spinner-border text-primary" role="status">
-                                            <span className="visually-hidden">Loading...</span>
+                                { loading ? (
+                                    <div id="search-results" className="row">
+                                        <div className="col-12 text-center py-5">
+                                            <div className="spinner-border text-primary" role="status">
+                                                <span className="visually-hidden">Loading...</span>
+                                            </div>
+                                            <p className="mt-3">Loading founders...</p>
                                         </div>
-                                        <p className="mt-3">Loading founders...</p>
                                     </div>
-                                </div>
+
+                                ) : error ? (
+                                    <div className="alert alert-danger" role="alert">
+                                        Error fetching data: {error.message}
+                                    </div>                                  
+                                ): founders.length === 0 ? ( 
+                                    <div className="alert alert-warning" role="alert">
+                                        No founders found.
+                                    </div>                                    
+                                ) : (
+                                    <div className="row" id="search-results">
+                                        {founders.map((founder) => (
+                                        <FounderCard key={founder.id} founder={founder} />
+                                        ))}
+                                    </div>                                   
+                                )}
                                 
                                 <div id="pagination" className="d-flex justify-content-center mt-4">
                                 </div>
