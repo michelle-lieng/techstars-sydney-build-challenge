@@ -1,59 +1,64 @@
 export default function Search() {
     return (
         <main>
-            <div class="container mt-4">
-                <div class="row">
-                    <div class="col-12">
+            <div className="container mt-4">
+                <div className="row">
+                    <div className="col-12">
                         <h1>Search Hidden Founders</h1>
-                        <p class="lead">Find high-potential founders across Australia using advanced filters.</p>
+                        <p className="lead">Find high-potential founders across Australia using advanced filters.</p>
                     </div>
                 </div>
 
-                <div class="row mt-3">
-                    <div class="col-md-3">
-                        <div class="card shadow-sm mb-4">
-                            <div class="card-header bg-light">
-                                <h5 class="card-title mb-0">Filters</h5>
+                <div className="row mt-3">
+                    <div className="col-md-3">
+                        <div className="card shadow-sm mb-4">
+                            <div className="card-header bg-light">
+                                <h5 className="card-title mb-0">Filters</h5>
                             </div>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <form id="search-form">
-                                    <div class="mb-3">
-                                        <label for="search-name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="search-name" placeholder="Enter name"/>
+                                    <div className="mb-3">
+                                        <label htmlFor="search-name" className="form-label">Name</label>
+                                        <input type="text" className="form-control" id="search-name" placeholder="Enter name"/>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label for="search-city" class="form-label">City</label>
-                                        <select class="form-select" id="search-city">
+                                    <div className="mb-3">
+                                        <label htmlFor="search-city" className="form-label">City</label>
+                                        <select className="form-select" id="search-city">
                                         </select>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label for="search-startup" class="form-label">Startup Name</label>
-                                        <input type="text" class="form-control" id="search-startup" placeholder="Enter startup name"/>
+                                    <div className="mb-3">
+                                        <label htmlFor="search-startup" className="form-label">Startup Name</label>
+                                        <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name"/>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label class="form-label">Founder Type</label>
-                                        <div class="tags-container" id="tags-container">
-                                            {/* {% for tag in tags %}
-                                            <div class="form-check">
-                                                <input class="form-check-input tag-checkbox" type="checkbox" value="{{ tag.name }}" id="tag-{{ tag.id }}">
-                                                <label class="form-check-label" for="tag-{{ tag.id }}">
-                                                    {{ tag.name }}
+                                    <div className="mb-3">
+                                        <label className="form-label">Founder Type</label>
+                                        <div className="tags-container" id="tags-container">
+                                            {/* {tags.map(tag => (
+                                            <div key={tag.id} className="form-check">
+                                                <input
+                                                className="form-check-input"
+                                                type="checkbox"
+                                                value={tag.name}
+                                                id={`tag-${tag.id}`}
+                                                />
+                                                <label className="form-check-label" htmlFor={`tag-${tag.id}`}>
+                                                {tag.name}
                                                 </label>
                                             </div>
-                                            {% endfor %} */}
+                                            ))} */}
                                         </div>
                                     </div>
                                     
                                     <hr/>
                                     
-                                    <h6 class="mb-3">Diversity Filters</h6>
+                                    <h6 className="mb-3">Diversity Filters</h6>
                                     
-                                    <div class="mb-3">
-                                        <label for="search-gender" class="form-label">Gender</label>
-                                        <select class="form-select" id="search-gender">
+                                    <div className="mb-3">
+                                        <label htmlFor="search-gender" className="form-label">Gender</label>
+                                        <select className="form-select" id="search-gender">
                                             <option value="">All Genders</option>
                                             <option value="Female">Female</option>
                                             <option value="Male">Male</option>
@@ -61,9 +66,9 @@ export default function Search() {
                                         </select>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label for="search-ethnicity" class="form-label">Ethnicity</label>
-                                        <select class="form-select" id="search-ethnicity">
+                                    <div className="mb-3">
+                                        <label htmlFor="search-ethnicity" className="form-label">Ethnicity</label>
+                                        <select className="form-select" id="search-ethnicity">
                                             <option value="">All Ethnicities</option>
                                             <option value="European Australian">European Australian</option>
                                             <option value="Asian Australian">Asian Australian</option>
@@ -76,48 +81,48 @@ export default function Search() {
                                         </select>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label for="search-migrant" class="form-label">Migrant Status</label>
-                                        <select class="form-select" id="search-migrant">
+                                    <div className="mb-3">
+                                        <label htmlFor="search-migrant" className="form-label">Migrant Status</label>
+                                        <select className="form-select" id="search-migrant">
                                             <option value="">All</option>
                                             <option value="true">Migrant Founders</option>
                                             <option value="false">Non-Migrant Founders</option>
                                         </select>
                                     </div>
                                     
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-primary">Apply Filters</button>
-                                        <button type="button" class="btn btn-outline-secondary mt-2" id="reset-filters">Reset Filters</button>
+                                    <div className="d-grid">
+                                        <button type="submit" className="btn btn-primary">Apply Filters</button>
+                                        <button type="button" className="btn btn-outline-secondary mt-2" id="reset-filters">Reset Filters</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-9">
-                        <div class="card shadow-sm mb-4">
-                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mb-0">Results <span id="result-count" class="badge bg-primary ms-2">0</span></h5>
-                                <div class="d-flex align-items-center">
-                                    <label for="sort-by" class="form-label me-2 mb-0">Sort by:</label>
-                                    <select class="form-select form-select-sm" id="sort-by" style="width: auto;">
+                    <div className="col-md-9">
+                        <div className="card shadow-sm mb-4">
+                            <div className="card-header bg-light d-flex justify-content-between align-items-center">
+                                <h5 className="card-title mb-0">Results <span id="result-count" className="badge bg-primary ms-2">0</span></h5>
+                                <div className="d-flex align-items-center">
+                                    <label htmlFor="sort-by" className="form-label me-2 mb-0">Sort by:</label>
+                                    <select className="form-select form-select-sm" id="sort-by" style={{ width: 'auto' }}>
                                         <option value="profile_completeness">Completeness</option>
                                         <option value="name">Name</option>
                                         <option value="city">City</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div id="search-results" class="row">
-                                    <div class="col-12 text-center py-5">
-                                        <div class="spinner-border text-primary" role="status">
-                                            <span class="visually-hidden">Loading...</span>
+                            <div className="card-body">
+                                <div id="search-results" className="row">
+                                    <div className="col-12 text-center py-5">
+                                        <div className="spinner-border text-primary" role="status">
+                                            <span className="visually-hidden">Loading...</span>
                                         </div>
-                                        <p class="mt-3">Loading founders...</p>
+                                        <p className="mt-3">Loading founders...</p>
                                     </div>
                                 </div>
                                 
-                                <div id="pagination" class="d-flex justify-content-center mt-4">
+                                <div id="pagination" className="d-flex justify-content-center mt-4">
                                 </div>
                             </div>
                         </div>
