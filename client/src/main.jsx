@@ -4,6 +4,7 @@ import './input.css'
 
 import App from './App'
 import Home from './pages/Home'
+import Search from './pages/Search'
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,9 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+            }, {
+                path: '/search',
+                element: <Search />
             }
         ]
     }
