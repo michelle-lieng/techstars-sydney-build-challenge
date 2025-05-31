@@ -30,8 +30,6 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-
-        resetFilters()
     };  
     
     const resetFilters = () => {

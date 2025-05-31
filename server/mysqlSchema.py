@@ -209,45 +209,45 @@ class FounderProfileDB:
                 return False
     
     def searchFounders(self, filters):
-    with self.app.app_context():
-        try:
-            cursor = self.mysql.connection.cursor()
+        with self.app.app_context():
+            try:
+                cursor = self.mysql.connection.cursor()
 
-            # Base query
-            query = "SELECT * FROM founder_profile WHERE 1=1"
-            params = []
+                # Base query
+                query = "SELECT * FROM founder_profile WHERE 1=1"
+                params = []
 
-            # Apply filters
-            if 'name' in filters:
-                query += " AND name LIKE %s"
-                params.append(f"%{filters['name']}%")
-            if 'city' in filters:
-                query += " AND city = %s"
-                params.append(filters['city'])
-            if 'startup_name' in filters:
-                query += " AND startup_name LIKE %s"
-                params.append(f"%{filters['startup_name']}%")
-            if 'gender' in filters:
-                query += " AND gender = %s"
-                params.append(filters['gender'])
-            if 'ethnicity' in filters:
-                query += " AND ethnicity = %s"
-                params.append(filters['ethnicity'])
-            if 'migrant' in filters:
-                query += " AND migrant = %s"
-                params.append(filters['migrant'])
+                # Apply filters
+                if 'name' in filters:
+                    query += " AND name LIKE %s"
+                    params.append(f"%{filters['name']}%")
+                if 'city' in filters:
+                    query += " AND city = %s"
+                    params.append(filters['city'])
+                if 'startup_name' in filters:
+                    query += " AND startup_name LIKE %s"
+                    params.append(f"%{filters['startup_name']}%")
+                if 'gender' in filters:
+                    query += " AND gender = %s"
+                    params.append(filters['gender'])
+                if 'ethnicity' in filters:
+                    query += " AND ethnicity = %s"
+                    params.append(filters['ethnicity'])
+                if 'migrant' in filters:
+                    query += " AND migrant = %s"
+                    params.append(filters['migrant'])
 
-            cursor.execute(query, params)
-            results = cursor.fetchall()
-            cursor.close()
+                cursor.execute(query, params)
+                results = cursor.fetchall()
+                cursor.close()
 
-            # Convert tags from JSON string to Python list
-            for founder in results:
-                if founder.get('tags') and isinstance(founder['tags'], str):
-                    founder['tags'] = json.loads(founder['tags'])
+                # Convert tags from JSON string to Python list
+                for founder in results:
+                    if founder.get('tags') and isinstance(founder['tags'], str):
+                        founder['tags'] = json.loads(founder['tags'])
 
-            return results
+                return results
 
-        except Exception as e:
-            print(f"Error searching founders: {e}")
-            return []
+            except Exception as e:
+                print(f"Error searching founders: {e}")
+                return []
