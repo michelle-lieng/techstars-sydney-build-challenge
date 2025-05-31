@@ -67,6 +67,7 @@ class FounderProfileDB:
                     tags JSON,
                     gender ENUM('Male', 'Female', 'Non-binary', 'Other', 'Prefer not to say'),
                     ethnicity VARCHAR(100),
+                    migrant BOOLEAN,
                     data_source VARCHAR(100)
                 ) ENGINE=InnoDB;
                 """
@@ -83,7 +84,7 @@ class FounderProfileDB:
         
     def insertFounder(self, name, linkedin_url=None, city=None, startup_name=None, 
                       profile_completeness=0, tags=None, gender=None, ethnicity=None, 
-                      data_source=None):
+                      migrant=None, data_source=None):
         with self.app.app_context():
             try:
                 cursor = self.mysql.connection.cursor()
@@ -93,12 +94,12 @@ class FounderProfileDB:
                 insert_query = """
                 INSERT INTO founder_profile (
                     name, linkedin_url, city, startup_name, profile_completeness,
-                    tags, gender, ethnicity, data_source
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    tags, gender, ethnicity, migrant, data_source
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
 
                 values = (
-                    name, linkedin_url, city, startup_name, profile_completeness, tags_json, gender, ethnicity, data_source
+                    name, linkedin_url, city, startup_name, profile_completeness, tags_json, gender, ethnicity, migrant, data_source
                 )
 
                 cursor.execute(insert_query, values)
@@ -206,3 +207,47 @@ class FounderProfileDB:
             except Exception as e:
                 print(f"Error updating founder profile: {e}")
                 return False
+    
+    def searchFounders(self, filters):
+        with self.app.app_context():
+            try:
+                cursor = self.mysql.connection.cursor()
+
+                # Base query
+                query = "SELECT * FROM founder_profile WHERE 1=1"
+                params = []
+
+                # Apply filters
+                if 'name' in filters:
+                    query += " AND name LIKE %s"
+                    params.append(f"%{filters['name']}%")
+                if 'city' in filters:
+                    query += " AND city = %s"
+                    params.append(filters['city'])
+                if 'startup_name' in filters:
+                    query += " AND startup_name LIKE %s"
+                    params.append(f"%{filters['startup_name']}%")
+                if 'gender' in filters:
+                    query += " AND gender = %s"
+                    params.append(filters['gender'])
+                if 'ethnicity' in filters:
+                    query += " AND ethnicity = %s"
+                    params.append(filters['ethnicity'])
+                if 'migrant' in filters:
+                    query += " AND migrant = %s"
+                    params.append(filters['migrant'])
+
+                cursor.execute(query, params)
+                results = cursor.fetchall()
+                cursor.close()
+
+                # Convert tags from JSON string to Python list
+                for founder in results:
+                    if founder.get('tags') and isinstance(founder['tags'], str):
+                        founder['tags'] = json.loads(founder['tags'])
+
+                return results
+
+            except Exception as e:
+                print(f"Error searching founders: {e}")
+                return []

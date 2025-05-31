@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from mysqlSchema import FounderProfileDB
 
@@ -24,7 +24,23 @@ def handle_exception(e):
 @app.route('/api/search', methods=['GET'])
 def getData():
     try:
-        founders = stealthDb.getAllFounders()
+        filters = {
+            'name': request.args.get('name'),
+            'city': request.args.get('city'),
+            'startup_name': request.args.get('startup'),
+            'gender': request.args.get('gender'),
+            'ethnicity': request.args.get('ethnicity'),
+            'migrant': request.args.get('migrant')
+        }
+
+        # Remove keys with None or empty string values
+        filters = {k: v for k, v in filters.items() if v}
+
+        if filters:
+            founders = stealthDb.searchFounders(filters)
+        else:
+            founders = stealthDb.getAllFounders()
+
         return jsonify(founders)
     except Exception as e:
         print(f"Error in /search route: {e}")

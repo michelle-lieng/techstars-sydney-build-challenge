@@ -1,29 +1,69 @@
 import React, { useState, useEffect } from 'react'
 import FounderCard  from '../components/FounderCard';
+import GenderDropdown from '../components/GenderDropdown';
 
 export default function Search() {
+    const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
+    const [debouncedStartupFilter, setDebouncedStartupFilter] = useState('');
+    
+    const resetFilters = () => {
+        setNameFilter('');
+        setCityFilter('');
+        setStartupFilter('');
+        setGenderFilter('');
+        setEthnicityFilter('');
+        setMigrantFilter('');
+    };
+
     const [founders, setFounders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [nameFilter, setNameFilter] = useState('');
+    const [cityFilter, setCityFilter] = useState('');
+    const [startupFilter, setStartupFilter] = useState('');
+    const [genderFilter, setGenderFilter] = useState('');
+    const [ethnicityFilter, setEthnicityFilter] = useState('');
+    const [migrantFilter, setMigrantFilter] = useState('');
 
     useEffect(() => {
-        fetch('api/search')
+        const params = new URLSearchParams();
+    
+        if (nameFilter) params.append('name', nameFilter);
+        if (cityFilter) params.append('city', cityFilter);
+        if (startupFilter) params.append('startup', startupFilter);
+        if (genderFilter) params.append('gender', genderFilter);
+        if (ethnicityFilter) params.append('ethnicity', ethnicityFilter);
+        if (migrantFilter) params.append('migrant', migrantFilter);
+    
+        setLoading(true);
+
+        fetch(`/api/search?${params.toString()}`)
             .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
             })
             .then((data) => {
-                setFounders(data);
-                setLoading(false);
+            setFounders(data);
+            setLoading(false);
             })
             .catch((error) => {
-                console.error('Error fetching data:', error);
-                setError(error);
-                setLoading(false);
-            })
-    }, []);
+            console.error('Error fetching data:', error);
+            setError(error);
+            setLoading(false);
+        });
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, ethnicityFilter, migrantFilter]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedNameFilter(nameFilter);
+            setDebouncedStartupFilter(startupFilter);
+        }, 500);
+        
+        return () => clearTimeout(timer);
+    }, [nameFilter, startupFilter]);
+
     return (
         <main>
             <div className="container mt-4">
@@ -41,21 +81,21 @@ export default function Search() {
                                 <h5 className="card-title mb-0">Filters</h5>
                             </div>
                             <div className="card-body">
-                                <form id="search-form">
+                                <form id="search-form" onSubmit={(e) => e.preventDefault()}>
                                     <div className="mb-3">
                                         <label htmlFor="search-name" className="form-label">Name</label>
-                                        <input type="text" className="form-control" id="search-name" placeholder="Enter name"/>
+                                        <input type="text" className="form-control" id="search-name" placeholder="Enter name" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
                                     </div>
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-city" className="form-label">City</label>
-                                        <select className="form-select" id="search-city">
+                                        <select className="form-select" id="search-city" value={cityFilter} onChange={(e) => setCityFilter(e.target.value)}>
                                         </select>
                                     </div>
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-startup" className="form-label">Startup Name</label>
-                                        <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name"/>
+                                        <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name" value={startupFilter} onChange={(e) => setStartupFilter(e.target.value)}/>
                                     </div>
                                     
                                     <div className="mb-3">
@@ -81,19 +121,14 @@ export default function Search() {
                                     
                                     <h6 className="mb-3">Diversity Filters</h6>
                                     
-                                    <div className="mb-3">
-                                        <label htmlFor="search-gender" className="form-label">Gender</label>
-                                        <select className="form-select" id="search-gender">
-                                            <option value="">All Genders</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Non-binary">Non-binary</option>
-                                        </select>
-                                    </div>
+                                    <GenderDropdown
+                                        value={genderFilter}
+                                        onChange={setGenderFilter}
+                                    />
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-ethnicity" className="form-label">Ethnicity</label>
-                                        <select className="form-select" id="search-ethnicity">
+                                        <select className="form-select" id="search-ethnicity" value={ethnicityFilter} onChange={(e) => setEthnicityFilter(e.target.value)}>
                                             <option value="">All Ethnicities</option>
                                             <option value="European Australian">European Australian</option>
                                             <option value="Asian Australian">Asian Australian</option>
@@ -113,11 +148,13 @@ export default function Search() {
                                             <option value="true">Migrant Founders</option>
                                             <option value="false">Non-Migrant Founders</option>
                                         </select>
-                                    </div>
+                                    </div>                                   
                                     
                                     <div className="d-grid">
                                         <button type="submit" className="btn btn-primary">Apply Filters</button>
-                                        <button type="button" className="btn btn-outline-secondary mt-2" id="reset-filters">Reset Filters</button>
+                                        <button type="button" className="btn btn-outline-secondary mt-2" id="reset-filters" onClick={resetFilters}>
+                                            Reset Filters
+                                        </button>
                                     </div>
                                 </form>
                             </div>
