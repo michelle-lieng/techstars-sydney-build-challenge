@@ -1,13 +1,15 @@
 import os
 from dotenv import load_dotenv
+from flask import Flask
 from mysqlSchema import FounderProfileDB
 
 load_dotenv()
 
 mysqlPass = os.getenv('MYSQL_PASSWORD')
 
-stealthDb = FounderProfileDB(password=mysqlPass)
-stealthDb.dbConnect()
+app = Flask(__name__)
+stealthDb = FounderProfileDB(app=app, password=mysqlPass)
+
 print(stealthDb)
 
 stealthDb.createFounderProfileTable()
@@ -30,4 +32,5 @@ for founder in founders:
 
 stealthDb.deleteFounder(founder_id=founderId)
 
-stealthDb.disconnect()
+if __name__ == '__main__':
+    app.run(debug=True)
