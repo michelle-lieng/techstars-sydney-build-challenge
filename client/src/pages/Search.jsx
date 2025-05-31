@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import FounderCard  from '../components/FounderCard';
+import GenderDropdown from '../components/GenderDropdown';
 
 export default function Search() {
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
+    const [debouncedStartupFilter, setDebouncedStartupFilter] = useState('');
     
+    const resetFilters = () => {
+        setNameFilter('');
+        setCityFilter('');
+        setStartupFilter('');
+        setGenderFilter('');
+        setEthnicityFilter('');
+        setMigrantFilter('');
+    };
+
+    const [founders, setFounders] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [nameFilter, setNameFilter] = useState('');
+    const [cityFilter, setCityFilter] = useState('');
+    const [startupFilter, setStartupFilter] = useState('');
+    const [genderFilter, setGenderFilter] = useState('');
+    const [ethnicityFilter, setEthnicityFilter] = useState('');
+    const [migrantFilter, setMigrantFilter] = useState('');
+
+    useEffect(() => {
         const params = new URLSearchParams();
     
         if (nameFilter) params.append('name', nameFilter);
@@ -14,6 +35,8 @@ export default function Search() {
         if (ethnicityFilter) params.append('ethnicity', ethnicityFilter);
         if (migrantFilter) params.append('migrant', migrantFilter);
     
+        setLoading(true);
+
         fetch(`/api/search?${params.toString()}`)
             .then((response) => {
             if (!response.ok) {
@@ -30,62 +53,17 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-    };  
-    
-    const resetFilters = () => {
-        setNameFilter('');
-        setCityFilter('');
-        setStartupFilter('');
-        setGenderFilter('');
-        setEthnicityFilter('');
-        setMigrantFilter('');
-        
-        fetch('/api/search')
-            .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-            })
-            .then((data) => {
-            setFounders(data);
-            setLoading(false);
-            })
-            .catch((error) => {
-            console.error('Error fetching data:', error);
-            setError(error);
-            setLoading(false);
-        });
-    };
-
-    const [founders, setFounders] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [nameFilter, setNameFilter] = useState('');
-    const [cityFilter, setCityFilter] = useState('');
-    const [startupFilter, setStartupFilter] = useState('');
-    const [genderFilter, setGenderFilter] = useState('');
-    const [ethnicityFilter, setEthnicityFilter] = useState('');
-    const [migrantFilter, setMigrantFilter] = useState('');
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, ethnicityFilter, migrantFilter]);
 
     useEffect(() => {
-        fetch('api/search')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setFounders(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-                setError(error);
-                setLoading(false);
-            })
-    }, []);
+        const timer = setTimeout(() => {
+            setDebouncedNameFilter(nameFilter);
+            setDebouncedStartupFilter(startupFilter);
+        }, 500);
+        
+        return () => clearTimeout(timer);
+    }, [nameFilter, startupFilter]);
+
     return (
         <main>
             <div className="container mt-4">
@@ -103,7 +81,7 @@ export default function Search() {
                                 <h5 className="card-title mb-0">Filters</h5>
                             </div>
                             <div className="card-body">
-                                <form id="search-form" onSubmit={handleSubmit}>
+                                <form id="search-form" onSubmit={(e) => e.preventDefault()}>
                                     <div className="mb-3">
                                         <label htmlFor="search-name" className="form-label">Name</label>
                                         <input type="text" className="form-control" id="search-name" placeholder="Enter name" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
@@ -143,15 +121,10 @@ export default function Search() {
                                     
                                     <h6 className="mb-3">Diversity Filters</h6>
                                     
-                                    <div className="mb-3">
-                                        <label htmlFor="search-gender" className="form-label">Gender</label>
-                                        <select className="form-select" id="search-gender" value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)}>
-                                            <option value="">All Genders</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Non-binary">Non-binary</option>
-                                        </select>
-                                    </div>
+                                    <GenderDropdown
+                                        value={genderFilter}
+                                        onChange={setGenderFilter}
+                                    />
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-ethnicity" className="form-label">Ethnicity</label>
@@ -170,12 +143,12 @@ export default function Search() {
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-migrant" className="form-label">Migrant Status</label>
-                                        <select className="form-select" id="search-migrant" value={migrantFilter} onChange={(e) => setMigrantFilter(e.target.value)}>
+                                        <select className="form-select" id="search-migrant">
                                             <option value="">All</option>
                                             <option value="true">Migrant Founders</option>
                                             <option value="false">Non-Migrant Founders</option>
                                         </select>
-                                    </div>
+                                    </div>                                   
                                     
                                     <div className="d-grid">
                                         <button type="submit" className="btn btn-primary">Apply Filters</button>
