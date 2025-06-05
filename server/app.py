@@ -33,6 +33,10 @@ def getData():
             'migrant': request.args.get('migrant')
         }
 
+        tags = request.args.getlist('tags')
+        if tags:
+            filters['tags'] = tags
+            
         # Remove keys with None or empty string values
         filters = {k: v for k, v in filters.items() if v}
 

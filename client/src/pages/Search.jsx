@@ -7,15 +7,6 @@ import MigrantDropdown from '../components/Migrant';
 export default function Search() {
     const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
     const [debouncedStartupFilter, setDebouncedStartupFilter] = useState('');
-    
-    const resetFilters = () => {
-        setNameFilter('');
-        setCityFilter('');
-        setStartupFilter('');
-        setGenderFilter('');
-        setMigrantFilter('');
-    };
-
     const [founders, setFounders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -24,6 +15,17 @@ export default function Search() {
     const [startupFilter, setStartupFilter] = useState('');
     const [genderFilter, setGenderFilter] = useState('');
     const [migrantFilter, setMigrantFilter] = useState('');
+    const [tagsFilter, setTagsFilter] = useState([]);
+    
+    const resetFilters = () => {
+        setNameFilter('');
+        setCityFilter('');
+        setStartupFilter('');
+        setGenderFilter('');
+        setMigrantFilter('');
+        setTagsFilter([]);
+    };
+
 
     useEffect(() => {
         const params = new URLSearchParams();
@@ -33,7 +35,11 @@ export default function Search() {
         if (startupFilter) params.append('startup', startupFilter);
         if (genderFilter) params.append('gender', genderFilter);
         if (migrantFilter) params.append('migrant', migrantFilter);
-    
+        
+        if (tagsFilter.length > 0) {
+            tagsFilter.forEach(tag => params.append('tags', tag)); 
+        }
+        
         setLoading(true);
 
         fetch(`/api/search?${params.toString()}`)
@@ -52,7 +58,7 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter]);
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter, tagsFilter]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -99,7 +105,10 @@ export default function Search() {
                                     
                                     <div className="mb-3">
                                         <label className="form-label">Tags</label>
-                                        <TagsDropdown />
+                                        <TagsDropdown
+                                            value={tagsFilter}
+                                            onChange={setTagsFilter}
+                                        />
                                     </div>
                                     
                                     <hr/>
@@ -113,7 +122,10 @@ export default function Search() {
                                 
                                     <div className="mb-3">
                                         <label htmlFor="search-migrant" className="form-label">Migrant Status</label>
-                                        <MigrantDropdown />
+                                        <MigrantDropdown 
+                                            value={migrantFilter}
+                                            onChange={setMigrantFilter}    
+                                        />
                                     </div>                                   
                                     
                                     <div className="d-grid">
@@ -134,7 +146,6 @@ export default function Search() {
                                 <div className="d-flex align-items-center">
                                     <label htmlFor="sort-by" className="form-label me-2 mb-0">Sort by:</label>
                                     <select className="form-select form-select-sm" id="sort-by" style={{ width: 'auto' }}>
-                                        <option value="profile_completeness">Completeness</option>
                                         <option value="name">Name</option>
                                         <option value="city">City</option>
                                     </select>

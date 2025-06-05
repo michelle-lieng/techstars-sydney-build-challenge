@@ -227,7 +227,7 @@ class FounderProfileDB:
                 founder = cursor.fetchone()
                 cursor.close()
 
-                if founder and founder['tages']:
+                if founder and founder['tags']:
                     founder['tags'] = json.loads(founder['tags'])
 
                 return founder
@@ -280,33 +280,44 @@ class FounderProfileDB:
                 if 'name' in filters:
                     query += " AND name LIKE %s"
                     params.append(f"%{filters['name']}%")
+
+                # City filter
                 if 'city' in filters:
                     query += " AND city = %s"
                     params.append(filters['city'])
+
+                # Startup name filter (only if current founder)
                 if 'startup_name' in filters:
-                    query += " AND startup_name LIKE %s"
+                    query += " AND is_current_founder = TRUE AND current_company LIKE %s"
                     params.append(f"%{filters['startup_name']}%")
+
+                # Gender filter
                 if 'gender' in filters:
                     query += " AND gender = %s"
                     params.append(filters['gender'])
-                if 'ethnicity' in filters:
-                    query += " AND ethnicity = %s"
-                    params.append(filters['ethnicity'])
+
+                # Migrant filter (expects boolean)
                 if 'migrant' in filters:
                     query += " AND migrant = %s"
                     params.append(filters['migrant'])
+
+                # Tags filter (assumes list of tags and checks overlap)
+                if 'tags' in filters and filters['tags']:
+                    for tag in filters['tags']:
+                        query += " AND JSON_CONTAINS(tags, %s)"
+                        params.append(json.dumps(tag))
 
                 cursor.execute(query, params)
                 results = cursor.fetchall()
                 cursor.close()
 
-                # Convert tags from JSON string to Python list
+                # Parse JSON fields
                 for founder in results:
                     if founder.get('tags') and isinstance(founder['tags'], str):
                         founder['tags'] = json.loads(founder['tags'])
 
                 return results
-
+        
             except Exception as e:
                 print(f"Error searching founders: {e}")
                 return []
