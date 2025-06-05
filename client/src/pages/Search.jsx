@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import FounderCard  from '../components/FounderCard';
 import GenderDropdown from '../components/GenderDropdown';
+import TagsDropdown from '../components/Tags';
 
 export default function Search() {
     const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
@@ -59,7 +60,7 @@ export default function Search() {
         const timer = setTimeout(() => {
             setDebouncedNameFilter(nameFilter);
             setDebouncedStartupFilter(startupFilter);
-        }, 500);
+        }, 5000);
         
         return () => clearTimeout(timer);
     }, [nameFilter, startupFilter]);
@@ -99,22 +100,8 @@ export default function Search() {
                                     </div>
                                     
                                     <div className="mb-3">
-                                        <label className="form-label">Founder Type</label>
-                                        <div className="tags-container" id="tags-container">
-                                            {/* {tags.map(tag => (
-                                            <div key={tag.id} className="form-check">
-                                                <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                value={tag.name}
-                                                id={`tag-${tag.id}`}
-                                                />
-                                                <label className="form-check-label" htmlFor={`tag-${tag.id}`}>
-                                                {tag.name}
-                                                </label>
-                                            </div>
-                                            ))} */}
-                                        </div>
+                                        <label className="form-label">Tags</label>
+                                        <TagsDropdown />
                                     </div>
                                     
                                     <hr/>
@@ -125,21 +112,7 @@ export default function Search() {
                                         value={genderFilter}
                                         onChange={setGenderFilter}
                                     />
-                                    
-                                    <div className="mb-3">
-                                        <label htmlFor="search-ethnicity" className="form-label">Ethnicity</label>
-                                        <select className="form-select" id="search-ethnicity" value={ethnicityFilter} onChange={(e) => setEthnicityFilter(e.target.value)}>
-                                            <option value="">All Ethnicities</option>
-                                            <option value="European Australian">European Australian</option>
-                                            <option value="Asian Australian">Asian Australian</option>
-                                            <option value="Indigenous Australian">Indigenous Australian</option>
-                                            <option value="Middle Eastern Australian">Middle Eastern Australian</option>
-                                            <option value="African Australian">African Australian</option>
-                                            <option value="Pacific Islander Australian">Pacific Islander Australian</option>
-                                            <option value="South Asian Australian">South Asian Australian</option>
-                                            <option value="Mixed Heritage">Mixed Heritage</option>
-                                        </select>
-                                    </div>
+                                
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-migrant" className="form-label">Migrant Status</label>
@@ -164,7 +137,7 @@ export default function Search() {
                     <div className="col-md-9">
                         <div className="card shadow-sm mb-4">
                             <div className="card-header bg-light d-flex justify-content-between align-items-center">
-                                <h5 className="card-title mb-0">Results <span id="result-count" className="badge bg-primary ms-2">0</span></h5>
+                                <h5 className="card-title mb-0">Results <span id="result-count" className="badge bg-primary ms-2">{ founders.length }</span></h5>
                                 <div className="d-flex align-items-center">
                                     <label htmlFor="sort-by" className="form-label me-2 mb-0">Sort by:</label>
                                     <select className="form-select form-select-sm" id="sort-by" style={{ width: 'auto' }}>

@@ -7,15 +7,11 @@ export default function FounderCard({ founder }) {
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-start">
             <h5 className="card-title founder-name mb-0">{founder.name}</h5>
-            <span className="badge bg-success founder-completeness">
-              {founder.profile_completeness}%
-            </span>
           </div>
           <p className="text-muted mb-2">
             <i className="bi bi-geo-alt"></i> {founder.city}
           </p>
-          <p className="founder-role mb-2">{founder.role}</p>
-          <p className="founder-startup small mb-2">{founder.startup}</p>
+          <p className="founder-role mb-2">{founder.current_title} at {founder.current_company}</p>
           <div className="founder-tags mb-3">
             {founder.tags && founder.tags.map((tag, index) => (
               <span key={index} className="badge bg-secondary me-1">{tag}</span>
