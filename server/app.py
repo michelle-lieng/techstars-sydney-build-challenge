@@ -50,5 +50,18 @@ def getData():
         print(f"Error in /search route: {e}")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/founders/<int:id>', methods=['GET'])
+def getFounder(id):
+    try:
+        founder = stealthDb.getFounderById(id)
+
+        if founder:
+            return jsonify(founder)
+        else:
+            return {}
+    except Exception as e:
+        print(f"Error in /founder/id route")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

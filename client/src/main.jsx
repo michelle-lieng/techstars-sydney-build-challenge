@@ -5,6 +5,7 @@ import './input.css'
 import App from './App'
 import Home from './pages/Home'
 import Search from './pages/Search'
+import FounderProfile from './pages/Founder'
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,9 @@ const router = createBrowserRouter([
             }, {
                 path: '/search',
                 element: <Search />
+            }, {
+                path: '/founder/:founderId',
+                element:<FounderProfile />
             }
         ]
     }
