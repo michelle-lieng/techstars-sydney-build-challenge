@@ -1,16 +1,41 @@
 {
     "founders": [
         {
-            "firstname": "",
-            "lastname": "",
-            "linkedin_url": "",
-            "city": "",
-            "startup_name": "",
-            "profile_completeness": "",
-            "tags": "",
-            "gender": "",
-            "ethnicity": "",
-            "data_source": ""
+            "name": "Example Person1",
+            "linkedin_url": "https://www.linkedin.com/",
+            "current_company": "Company1",
+            "current_title": "Developer",
+            "top_degree": "Example Degree",
+            "top_degree_label": "Bachelor",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": ["Antler", "The Generator"],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": ["Google", "Meta"],
+            "gender": "Male",
+            "migrant": "True"
+        }, 
+        {
+            "name": "Example Person2",
+            "linkedin_url": "https://www.linkedin.com/",
+            "current_company": "Company2",
+            "current_title": "Founder",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Round 2",
+            "curr_startup_url": "https://examplecompany2.com/",
+            "curr_startup_info": "Changing the way tech is seen",
+            "curr_startup_industry": "Tech",
+            "ai_in_curr_startup": "True",
+            "was_prev_founder": "False",
+            "all_founded_companies": ["Company2"],
+            "top_degree": "Examp Degree wow",
+            "top_degree_label": "PhD",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": ["Amazon"],
+            "gender": "Female",
+            "migrant": "False"
         }
     ]
 }
