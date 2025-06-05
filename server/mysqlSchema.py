@@ -1,7 +1,9 @@
 from flask import Flask, current_app
 from flask_mysqldb import MySQL
+from MySQLdb.cursors import DictCursor
 import json
 from datetime import datetime
+from createTags import createTags
 
 class FounderProfileDB:
     def __init__(self, app=None, host="localhost", user="root", password="", database="founder_db"):
@@ -49,6 +51,21 @@ class FounderProfileDB:
         finally:
             self.app.config['MYSQL_DB'] = originalDb
 
+    def dropFounderTable(self):
+        with self.app.app_context():
+            try:
+                cursor = self.mysql.connection.cursor()
+
+                drop_table_query = """
+                DROP TABLE founder_profile
+                """
+                cursor.execute(drop_table_query)
+                self.mysql.connection.commit()
+                print("Founder profile table dropped")
+                cursor.close()
+            except Exception as e:
+                print(f"Error creating founder profile table: {e}")
+
     def createFounderProfileTable(self):
         with self.app.app_context():
             try:
@@ -60,15 +77,31 @@ class FounderProfileDB:
                     name VARCHAR(255),
                     linkedin_url VARCHAR(255),
                     city VARCHAR(100),
-                    startup_name VARCHAR(255),
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                    profile_completeness TINYINT UNSIGNED DEFAULT 0 CHECK (profile_completeness BETWEEN 0 AND 100),
-                    tags JSON,
+                    current_company VARCHAR(255),
+                    current_title VARCHAR(255),
+                    current_job_start DATE,
+                    is_current_founder BOOLEAN,
+                    curr_startup_funding_stage VARCHAR(255),
+                    curr_startup_url VARCHAR(255),
+                    curr_startup_info VARCHAR(255),
+                    curr_startup_industry VARCHAR(255),
+                    ai_in_curr_startup BOOLEAN,
+                    was_prev_founder BOOLEAN,
+                    all_founded_companies JSON,
+                    top_degree VARCHAR(100),
+                    top_degree_label VARCHAR(10),
+                    top_degree_end_date DATE,
+                    was_in_accelerator BOOLEAN,
+                    accelerators_worked_in JSON,
+                    was_in_scaleup BOOLEAN,
+                    scaleups_worked_in JSON,
+                    was_in_bigtech BOOLEAN,
+                    bigtechs_worked_in JSON,
                     gender ENUM('Male', 'Female', 'Non-binary', 'Other', 'Prefer not to say'),
-                    ethnicity VARCHAR(100),
                     migrant BOOLEAN,
-                    data_source VARCHAR(100)
+                    tags JSON,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                 ) ENGINE=InnoDB;
                 """
 
@@ -79,27 +112,41 @@ class FounderProfileDB:
 
             except Exception as e:
                 print(f"Error creating founder profile table: {e}")
-
-
-        
-    def insertFounder(self, name, linkedin_url=None, city=None, startup_name=None, 
-                      profile_completeness=0, tags=None, gender=None, ethnicity=None, 
-                      migrant=None, data_source=None):
+ 
+    def insertFounder(self, name, linkedin_url=None, city=None, current_company=None, 
+                      current_title=None, current_job_start=None, is_current_founder=False, curr_startup_funding_stage=None, 
+                      curr_startup_url=None, curr_startup_info=None, curr_startup_industry=None, ai_in_curr_startup=None,
+                      was_prev_founder=False, all_founded_companies=None, top_degree=None, top_degree_label=None, top_degree_end_date=None,
+                      was_in_accelerator=False, accelerators_worked_in=None, was_in_scaleup=False, scaleups_worked_in=None, was_in_bigtech=False,
+                      bigtechs_worked_in=None, gender=None, migrant=False):
         with self.app.app_context():
             try:
                 cursor = self.mysql.connection.cursor()
+                tags = createTags(is_current_founder=is_current_founder, ai_in_curr_startup=ai_in_curr_startup, was_prev_founder=was_prev_founder,
+                                  top_degree_label=top_degree_label,was_in_accelerator=was_in_accelerator, was_in_scaleup=was_in_scaleup,
+                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant)
+
+                all_founded_companies__json = json.dumps(all_founded_companies) if all_founded_companies else None
+                accelerators_worked_in__json = json.dumps(accelerators_worked_in) if accelerators_worked_in else None
+                scaleups_worked_in__json = json.dumps(scaleups_worked_in) if scaleups_worked_in else None
+                bigtechs_worked_in__json = json.dumps(bigtechs_worked_in) if bigtechs_worked_in else None
 
                 tags_json = json.dumps(tags) if tags else None
 
                 insert_query = """
                 INSERT INTO founder_profile (
-                    name, linkedin_url, city, startup_name, profile_completeness,
-                    tags, gender, ethnicity, migrant, data_source
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    name, linkedin_url, city, current_company, current_title, current_job_start, is_current_founder, curr_startup_funding_stage,
+                    curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies,
+                    top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in, was_in_scaleup, scaleups_worked_in,
+                    was_in_bigtech, bigtechs_worked_in, gender, migrant, tags
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
 
                 values = (
-                    name, linkedin_url, city, startup_name, profile_completeness, tags_json, gender, ethnicity, migrant, data_source
+                    name, linkedin_url, city, current_company, current_title, current_job_start, is_current_founder, curr_startup_funding_stage,
+                    curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies__json,
+                    top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in__json, was_in_scaleup, scaleups_worked_in__json,
+                    was_in_bigtech, bigtechs_worked_in__json, gender, migrant, tags_json
                 )
 
                 cursor.execute(insert_query, values)
@@ -148,6 +195,18 @@ class FounderProfileDB:
                 cursor.close()
 
                 for founder in results:
+                    if founder.get('all_founded_companies') and isinstance(founder['all_founded_companies'], str):
+                        founder['all_founded_companies'] = json.loads(founder['all_founded_companies'])
+
+                    if founder.get('accelerators_worked_in') and isinstance(founder['accelerators_worked_in'], str):
+                        founder['accelerators_worked_in'] = json.loads(founder['accelerators_worked_in'])
+                    
+                    if founder.get('scaleups_worked_in') and isinstance(founder['scaleups_worked_in'], str):
+                        founder['scaleups_worked_in'] = json.loads(founder['scaleups_worked_in'])
+
+                    if founder.get('bigtechs_worked_in') and isinstance(founder['bigtechs_worked_in'], str):
+                        founder['bigtechs_worked_in'] = json.loads(founder['bigtechs_worked_in'])
+                    
                     if founder.get('tags') and isinstance(founder['tags'], str):
                         founder['tags'] = json.loads(founder['tags'])
 
@@ -168,7 +227,7 @@ class FounderProfileDB:
                 founder = cursor.fetchone()
                 cursor.close()
 
-                if founder and founder['tages']:
+                if founder and founder['tags']:
                     founder['tags'] = json.loads(founder['tags'])
 
                 return founder
@@ -211,7 +270,7 @@ class FounderProfileDB:
     def searchFounders(self, filters):
         with self.app.app_context():
             try:
-                cursor = self.mysql.connection.cursor()
+                cursor = self.mysql.connection.cursor(DictCursor)
 
                 # Base query
                 query = "SELECT * FROM founder_profile WHERE 1=1"
@@ -221,33 +280,44 @@ class FounderProfileDB:
                 if 'name' in filters:
                     query += " AND name LIKE %s"
                     params.append(f"%{filters['name']}%")
+
+                # City filter
                 if 'city' in filters:
                     query += " AND city = %s"
                     params.append(filters['city'])
+
+                # Startup name filter (only if current founder)
                 if 'startup_name' in filters:
-                    query += " AND startup_name LIKE %s"
+                    query += " AND is_current_founder = TRUE AND current_company LIKE %s"
                     params.append(f"%{filters['startup_name']}%")
+
+                # Gender filter
                 if 'gender' in filters:
                     query += " AND gender = %s"
                     params.append(filters['gender'])
-                if 'ethnicity' in filters:
-                    query += " AND ethnicity = %s"
-                    params.append(filters['ethnicity'])
+
+                # Migrant filter (expects boolean)
                 if 'migrant' in filters:
                     query += " AND migrant = %s"
                     params.append(filters['migrant'])
+
+                # Tags filter (assumes list of tags and checks overlap)
+                if 'tags' in filters and filters['tags']:
+                    for tag in filters['tags']:
+                        query += " AND JSON_CONTAINS(tags, %s)"
+                        params.append(json.dumps(tag))
 
                 cursor.execute(query, params)
                 results = cursor.fetchall()
                 cursor.close()
 
-                # Convert tags from JSON string to Python list
+                # Parse JSON fields
                 for founder in results:
                     if founder.get('tags') and isinstance(founder['tags'], str):
                         founder['tags'] = json.loads(founder['tags'])
 
                 return results
-
+        
             except Exception as e:
                 print(f"Error searching founders: {e}")
                 return []

@@ -175,3 +175,8 @@ cython_debug/
 
 #frontend
 client/node_modules/
+.env
+.venv
+__pycache__
+data
+table_view.html

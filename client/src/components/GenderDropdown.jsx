@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 export default function GenderDropdown({ value, onChange }) {
-  const [genderFilter, setGenderFilter] = useState('');
-
   return (
     <div className="mb-3">
       <label htmlFor="search-gender" className="form-label">Gender</label>

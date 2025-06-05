@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from mysqlSchema import FounderProfileDB
+import json
 
 load_dotenv()
 
@@ -9,15 +10,54 @@ mysqlPass = os.getenv('MYSQL_PASSWORD')
 
 app = Flask(__name__)
 stealthDb = FounderProfileDB(app=app, password=mysqlPass)
+# stealthDb.dropFounderTable()
+# stealthDb.createFounderProfileTable()
 
-founderId = stealthDb.insertFounder(
-    name="Alice Example",
-    linkedin_url="https://linkedin.com/in/alice",
-    city="Melbourne",
-    startup_name="CoolStartup",
-    profile_completeness=90,
-    tags=["AI", "Founder", "Australia"],
-    gender="Female",
-    ethnicity="Asian",
-    data_source="Manual Entry"
-)
+# with open('data.json', 'r') as f:
+#     data = json.load(f)
+
+# founders = data.get("founders", [])
+
+# for founder in founders:
+#     try:
+#         # Parse booleans from strings
+#         for key in ['is_current_founder', 'was_prev_founder', 'was_in_accelerator', 
+#                     'was_in_scaleup', 'was_in_bigtech', 'migrant', 'ai_in_curr_startup']:
+#             if key in founder:
+#                 founder[key] = founder[key] == "True"
+
+#         # Call insertFounder with keyword unpacking
+#         stealthDb.insertFounder(
+#             name=founder.get('name'),
+#             linkedin_url=founder.get('linkedin_url'),
+#             city=founder.get('city'),
+#             current_company=founder.get('current_company'),
+#             current_title=founder.get('current_title'),
+#             current_job_start=founder.get('current_job_start'),
+#             is_current_founder=founder.get('is_current_founder', False),
+#             curr_startup_funding_stage=founder.get('curr_startup_funding_stage'),
+#             curr_startup_url=founder.get('curr_startup_url'),
+#             curr_startup_info=founder.get('curr_startup_info'),
+#             curr_startup_industry=founder.get('curr_startup_industry'),
+#             ai_in_curr_startup=founder.get('ai_in_curr_startup', False),
+#             was_prev_founder=founder.get('was_prev_founder', False),
+#             all_founded_companies=founder.get('all_founded_companies'),
+#             top_degree=founder.get('top_degree'),
+#             top_degree_label=founder.get('top_degree_label'),
+#             top_degree_end_date=founder.get('top_degree_end_date'),
+#             was_in_accelerator=founder.get('was_in_accelerator', False),
+#             accelerators_worked_in=founder.get('accelerators_worked_in'),
+#             was_in_scaleup=founder.get('was_in_scaleup', False),
+#             scaleups_worked_in=founder.get('scaleups_worked_in'),
+#             was_in_bigtech=founder.get('was_in_bigtech', False),
+#             bigtechs_worked_in=founder.get('bigtechs_worked_in'),
+#             gender=founder.get('gender'),
+#             migrant=founder.get('migrant', False)
+#         )
+#     except Exception as e:
+#         print(f"Failed to insert founder {founder.get('name')}: {e}")
+
+founders = stealthDb.getAllFounders()
+
+for founder in founders:
+    print(founder)
