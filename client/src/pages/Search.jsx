@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FounderCard  from '../components/FounderCard';
 import GenderDropdown from '../components/GenderDropdown';
 import TagsDropdown from '../components/Tags';
+import MigrantDropdown from '../components/Migrant';
 
 export default function Search() {
     const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
@@ -12,7 +13,6 @@ export default function Search() {
         setCityFilter('');
         setStartupFilter('');
         setGenderFilter('');
-        setEthnicityFilter('');
         setMigrantFilter('');
     };
 
@@ -23,7 +23,6 @@ export default function Search() {
     const [cityFilter, setCityFilter] = useState('');
     const [startupFilter, setStartupFilter] = useState('');
     const [genderFilter, setGenderFilter] = useState('');
-    const [ethnicityFilter, setEthnicityFilter] = useState('');
     const [migrantFilter, setMigrantFilter] = useState('');
 
     useEffect(() => {
@@ -33,7 +32,6 @@ export default function Search() {
         if (cityFilter) params.append('city', cityFilter);
         if (startupFilter) params.append('startup', startupFilter);
         if (genderFilter) params.append('gender', genderFilter);
-        if (ethnicityFilter) params.append('ethnicity', ethnicityFilter);
         if (migrantFilter) params.append('migrant', migrantFilter);
     
         setLoading(true);
@@ -54,7 +52,7 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-    }, [nameFilter, cityFilter, startupFilter, genderFilter, ethnicityFilter, migrantFilter]);
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -113,14 +111,9 @@ export default function Search() {
                                         onChange={setGenderFilter}
                                     />
                                 
-                                    
                                     <div className="mb-3">
                                         <label htmlFor="search-migrant" className="form-label">Migrant Status</label>
-                                        <select className="form-select" id="search-migrant">
-                                            <option value="">All</option>
-                                            <option value="true">Migrant Founders</option>
-                                            <option value="false">Non-Migrant Founders</option>
-                                        </select>
+                                        <MigrantDropdown />
                                     </div>                                   
                                     
                                     <div className="d-grid">
