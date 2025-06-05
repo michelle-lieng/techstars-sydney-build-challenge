@@ -219,10 +219,10 @@ class FounderProfileDB:
     def getFounderById(self, founder_id):
         with self.app.app_context():
             try:
-                cursor = self.mysql.connection.cursor(dictionary=True)
+                cursor = self.mysql.connection.cursor(DictCursor)
 
                 select_query = "SELECT * FROM founder_profile WHERE id = %s"
-                cursor.execute(select_query, (founder_id))
+                cursor.execute(select_query, (founder_id,))
 
                 founder = cursor.fetchone()
                 cursor.close()
