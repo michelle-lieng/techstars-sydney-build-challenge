@@ -1,6 +1,6 @@
 import re
 from typing import List, Union
-from src.models import LinkedInJob, LinkedInEducation
+from src.utilities.models import LinkedInJob, LinkedInEducation
 import json
 from pydantic import ValidationError
 
@@ -28,3 +28,5 @@ def parse_linkedin_education(raw_text: str) -> Union[List[LinkedInEducation], No
     except (json.JSONDecodeError, ValidationError) as e:
         print(f"[Education Parse Error] {e}")
         return None
+    
+

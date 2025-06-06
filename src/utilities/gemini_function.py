@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 import pandas as pd
-from src.prompts import linkedin_job_json_prompt
+from src.utilities.prompts import linkedin_job_json_prompt
 
 # Load variables
 load_dotenv()
