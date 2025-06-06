@@ -46,15 +46,12 @@ export default function Search() {
     useEffect(() => {
         if (highestDegreeFilter) {
             setTagsFilter((prevTags) => {
-                // Remove any previous degree values before adding the new one
                 const degreeTags = ['Bachelor', 'Masters', 'PhD'];
                 const filteredTags = prevTags.filter(tag => !degreeTags.includes(tag));
 
-                // Only add if it’s not already in
                 return [...filteredTags, highestDegreeFilter];
             });
         } else {
-            // If degree filter is cleared, remove all degree tags
             setTagsFilter((prevTags) => prevTags.filter(tag => !['Bachelor', 'Masters', 'PhD'].includes(tag)));
         }
     }, [highestDegreeFilter]);
@@ -156,6 +153,8 @@ export default function Search() {
                                         />
                                     </div>  
                                     
+                                    <hr/>
+
                                     <div className="mb-3">
                                         <label className="form-label">Tags</label>
                                         <TagsDropdown
@@ -199,8 +198,8 @@ export default function Search() {
                                 <div className="d-flex align-items-center">
                                     <label htmlFor="sort-by" className="form-label me-2 mb-0">Sort by:</label>
                                     <select className="form-select form-select-sm" id="sort-by" style={{ width: 'auto' }}>
-                                        <option value="name">Name</option>
-                                        <option value="city">City</option>
+                                        <option value="name">Default</option>
+                                        <option value="city">Name</option>
                                     </select>
                                 </div>
                             </div>

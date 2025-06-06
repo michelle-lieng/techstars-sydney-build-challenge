@@ -24,13 +24,12 @@ export default function AboutPage() {
                             
                             <ul>
                                 <li><strong>Basic Information:</strong> Name, LinkedIn profile, city, and startup details</li>
-                                <li><strong>Founder Categories:</strong> Tags like "scale-up alum," "side project builder," "PhD researcher," and "migrant founder"</li>
-                                <li><strong>Diversity Measures:</strong> Gender, ethnicity, and other demographic information</li>
-                                <li><strong>Professional Background:</strong> Skills, previous companies, and education</li>
-                                <li><strong>Projects & Achievements:</strong> Research projects, side projects, and notable achievements</li>
+                                <li><strong>Filters:</strong> Name, City, Startup Name, Highest Level Degree, Tags, Gender and Migrant Status</li>
+                                <li><strong>Diversity Measures:</strong> Gender and Migrant Status</li>
+                                <li><strong>Professional Background:</strong> Companies, Roles and Education</li>
                             </ul>
                             
-                            <p>Users can search and filter this database to find specific types of founders based on their interests, investment thesis, or mentorship capabilities.</p>
+                            <p>Users can search and filter this database to find specific types of founders.</p>
                             
                             <h2 className="mt-4">Data Sources</h2>
                             <p>Our founder profiles are compiled from a variety of sources, including:</p>
@@ -38,7 +37,7 @@ export default function AboutPage() {
                             <ul>
                                 <li><strong>LinkedIn:</strong> Professional backgrounds, career trajectories, and side project links</li>
                                 <li><strong>Crunchbase:</strong> Information on stealth startups and early-stage companies</li>
-                                <li><strong>University and Research Websites:</strong> Details on academic founders and research projects</li>
+                                <li><strong>Search Engines:</strong> Webscraping Google and Bing</li>
                                 <li><strong>Community Groups:</strong> Slack/Discord communities, meetup lists, and university clubs</li>
                                 <li><strong>Social Media:</strong> Twitter/X profiles, Product Hunt submissions, and GitHub repositories</li>
                             </ul>
@@ -77,10 +76,6 @@ export default function AboutPage() {
                         </div>
                         <div className="card-body">
                             <p>Have questions about the Hidden Founders database or want to suggest improvements?</p>
-                            
-                            <p>
-                                <i className="bi bi-envelope"></i> <a href="mailto:contact@hiddenfounders.com">contact@hiddenfounders.com</a>
-                            </p>
                             
                             <p>
                                 <i className="bi bi-github"></i> <a href="https://github.com/michelle-lieng/techstars-sydney-build-challenge" target="_blank">GitHub Repository</a>

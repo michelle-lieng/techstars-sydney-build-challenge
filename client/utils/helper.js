@@ -31,7 +31,7 @@ export function animateCardsOnScroll() {
 }
 
 export function setupScrollAnimation() {
-    window.removeEventListener('scroll', animateCardsOnScroll); // prevent duplicate
+    window.removeEventListener('scroll', animateCardsOnScroll);
     window.addEventListener('scroll', animateCardsOnScroll);
-    animateCardsOnScroll(); // initial
+    animateCardsOnScroll();
 }
