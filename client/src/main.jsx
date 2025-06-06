@@ -6,6 +6,7 @@ import App from './App'
 import Home from './pages/Home'
 import Search from './pages/Search'
 import FounderProfile from './pages/Founder'
+import AboutPage from './pages/About'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
             }, {
                 path: '/founder/:founderId',
                 element:<FounderProfile />
+            }, {
+                path: '/about',
+                element: <AboutPage />
             }
         ]
     }
