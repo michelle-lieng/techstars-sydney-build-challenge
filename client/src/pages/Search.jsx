@@ -4,6 +4,7 @@ import GenderDropdown from '../components/GenderDropdown';
 import TagsDropdown from '../components/Tags';
 import MigrantDropdown from '../components/Migrant';
 import Pagination from '../components/Pagination';
+import HighestDegree from '../components/HighestEducation';
 import { 
     initTooltips,
     initPopovers,
@@ -20,6 +21,7 @@ export default function Search() {
     const [nameFilter, setNameFilter] = useState('');
     const [cityFilter, setCityFilter] = useState('');
     const [startupFilter, setStartupFilter] = useState('');
+    const [ highestDegreeFilter, setHighestDegreeFilter] = useState('');
     const [genderFilter, setGenderFilter] = useState('');
     const [migrantFilter, setMigrantFilter] = useState('');
     const [tagsFilter, setTagsFilter] = useState([]);
@@ -41,6 +43,21 @@ export default function Search() {
         setTagsFilter([]);
     };
 
+    useEffect(() => {
+        if (highestDegreeFilter) {
+            setTagsFilter((prevTags) => {
+                // Remove any previous degree values before adding the new one
+                const degreeTags = ['Bachelor', 'Masters', 'PhD'];
+                const filteredTags = prevTags.filter(tag => !degreeTags.includes(tag));
+
+                // Only add if it’s not already in
+                return [...filteredTags, highestDegreeFilter];
+            });
+        } else {
+            // If degree filter is cleared, remove all degree tags
+            setTagsFilter((prevTags) => prevTags.filter(tag => !['Bachelor', 'Masters', 'PhD'].includes(tag)));
+        }
+    }, [highestDegreeFilter]);
 
     useEffect(() => {
         const params = new URLSearchParams();
@@ -130,6 +147,14 @@ export default function Search() {
                                         <label htmlFor="search-startup" className="form-label">Startup Name</label>
                                         <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name" value={startupFilter} onChange={(e) => setStartupFilter(e.target.value)}/>
                                     </div>
+
+                                    <div className="mb-3">
+                                        <label htmlFor="search-degree" className="form-label">Highest Level Degree</label>
+                                        <HighestDegree 
+                                            value={highestDegreeFilter}
+                                            onChange={setHighestDegreeFilter}    
+                                        />
+                                    </div>  
                                     
                                     <div className="mb-3">
                                         <label className="form-label">Tags</label>
