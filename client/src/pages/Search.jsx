@@ -3,6 +3,13 @@ import FounderCard  from '../components/FounderCard';
 import GenderDropdown from '../components/GenderDropdown';
 import TagsDropdown from '../components/Tags';
 import MigrantDropdown from '../components/Migrant';
+import Pagination from '../components/Pagination';
+import { 
+    initTooltips,
+    initPopovers,
+    makeTablesResponsive,
+    setupScrollAnimation
+ } from '../../utils/helper';
 
 export default function Search() {
     const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
@@ -16,6 +23,14 @@ export default function Search() {
     const [genderFilter, setGenderFilter] = useState('');
     const [migrantFilter, setMigrantFilter] = useState('');
     const [tagsFilter, setTagsFilter] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const foundersPerPage = 10;
+
+    const indexOfLastFounder = currentPage * foundersPerPage;
+    const indexOfFirstFounder = indexOfLastFounder - foundersPerPage;
+    const currentFounders = founders.slice(indexOfFirstFounder, indexOfLastFounder);
+
+    const totalPages = Math.ceil(founders.length / foundersPerPage);
     
     const resetFilters = () => {
         setNameFilter('');
@@ -51,6 +66,7 @@ export default function Search() {
             })
             .then((data) => {
             setFounders(data);
+            setCurrentPage(1);
             setLoading(false);
             })
             .catch((error) => {
@@ -69,6 +85,18 @@ export default function Search() {
         return () => clearTimeout(timer);
     }, [nameFilter, startupFilter]);
 
+    useEffect(() => {
+    if (!loading && founders.length > 0) {
+        initTooltips();
+        initPopovers();
+        makeTablesResponsive();
+        setupScrollAnimation();
+    }
+    }, [loading, founders]);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [currentPage]);
     return (
         <main>
             <div className="container mt-4">
@@ -172,13 +200,20 @@ export default function Search() {
                                     </div>                                    
                                 ) : (
                                     <div className="row" id="search-results">
-                                        {founders.map((founder) => (
+                                        {currentFounders.map((founder) => (
                                         <FounderCard key={founder.id} founder={founder} />
                                         ))}
                                     </div>                                   
                                 )}
                                 
                                 <div id="pagination" className="d-flex justify-content-center mt-4">
+                                    {totalPages > 1 && (
+                                        <Pagination
+                                            currentPage={currentPage}
+                                            totalPages={totalPages}
+                                            setCurrentPage={setCurrentPage}
+                                        />
+                                    )}
                                 </div>
                             </div>
                         </div>
