@@ -45,6 +45,7 @@ def extract_top_education_info(entries: List[dict]) -> Optional[dict]:
     top_score = -1
     top_entry = None
     for entry in entries:
+        print(entry)
         score = categorize(entry.degree)
         if score > top_score:
             top_score = score
@@ -122,5 +123,7 @@ def get_all_locations_worked(jobs: List[dict]) -> Tuple[Optional[str], bool]:
     #return ", ".join(all_locations), is_migrant
     return all_locations, is_migrant
 
-def current_city(all_locations_worked: list) -> str:
+def current_city(all_locations_worked):
+    if not all_locations_worked or not isinstance(all_locations_worked, list) or not all_locations_worked[0]:
+        return None
     return all_locations_worked[0].split(",")[0]

@@ -48,7 +48,7 @@ calculate_duration("Apr 2025", "Jan 2027")
 founder_keywords = [
     "founder", "co-founder", "cofounder", "founding engineer",
     "founding member", "founding team", "cto", "ceo", "cpo", "cso", "chief",
-    "chief executive officer"
+    "chief executive officer", "owner"
 ]
 
 def is_founder_role(title: str) -> bool:
@@ -137,22 +137,28 @@ def get_founder_companies(jobs: List[dict], founder_name: str, is_founder: bool,
 
     founder_companies = []
 
+    # for job in jobs_to_check:
+    #     if is_founder_role(job.title):
+    #         url = bing_find_linkedin_company_url(job.company.strip(), founder_name)
+    #         bing_funding = bing_funding_info(job.company.strip(), founder_name, current_job_start_date)
+    #         funding_info = "Bootstrapped" if bing_funding is None else infer_startup_funding_stage(bing_funding)
+    #         if url != "Invalid":
+    #             founder_companies.append({
+    #                 "title": job.title,
+    #                 "startup": job.company.strip(),
+    #                 "startup_url": url,
+    #                 "linkedin_follower_count": get_linkedin_company_followers_from_url(url),
+    #                 #"bing_funding": bing_funding,
+    #                 "funding_info": funding_info,
+    #                 "startup_length": calculate_duration(job.start_date,job.end_date)
+    #             })
     for job in jobs_to_check:
         if is_founder_role(job.title):
-            url = bing_find_linkedin_company_url(job.company.strip(), founder_name)
-            bing_funding = bing_funding_info(job.company.strip(), founder_name, current_job_start_date)
-            funding_info = "Bootstrapped" if bing_funding is None else infer_startup_funding_stage(bing_funding)
-            if url != "Invalid":
-                founder_companies.append({
-                    "title": job.title,
-                    "startup": job.company.strip(),
-                    "startup_url": url,
-                    "linkedin_follower_count": get_linkedin_company_followers_from_url(url),
-                    #"bing_funding": bing_funding,
-                    "funding_info": funding_info,
-                    "startup_length": calculate_duration(job.start_date,job.end_date)
-                })
-
+            founder_companies.append({
+                "title": job.title,
+                "startup": job.company.strip(),
+                "startup_length": calculate_duration(job.start_date,job.end_date)
+            })
     if founder_companies == []:
         return None
 

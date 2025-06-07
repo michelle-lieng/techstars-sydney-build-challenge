@@ -39,8 +39,13 @@ def merge_previous_results(df, columns_to_merge):
     """
     if os.path.exists("data/linkedin_processed.xlsx"):
         df_processed = pd.read_excel("data/linkedin_processed.xlsx")
-        cols = list(set(["name"] + columns_to_merge))
+        # Only keep columns that exist in df_processed
+        cols = ["name"] + [col for col in columns_to_merge if col in df_processed.columns]
         df = df.merge(df_processed[cols], on="name", how="left")
+        # For any columns not present, initialize as None
+        for col in columns_to_merge:
+            if col not in df.columns:
+                df[col] = None
     else:
         for col in columns_to_merge:
             df[col] = None
@@ -56,38 +61,43 @@ def run_or_skip(row, col_name, func, func_args=None, condition=None):
     necessary rows. 
     """
     if pd.notna(row.get(col_name)):
-        return row[col_name]
+        return row[col_name], True  # Skipped
     if condition is not None and not condition(row):
-        return None
+        return None, False
     func_args = func_args or []
-    # this line lets use mix row values as constants as arguments 
     resolved_args = [
         row[arg.name] if isinstance(arg, Col) 
         else arg for arg in func_args
     ]
-    return func(*resolved_args)
+    return func(*resolved_args), False  # Not skipped
 
 def cols_to_skip_if_filled(df, cols_to_skip):
-    # Merge all previous results at once
+    skip_report = {item["col"]: [] for item in cols_to_skip}
     df = merge_previous_results(
         df,
         columns_to_merge=[item["col"] for item in cols_to_skip]
     )
-    # Apply updates only if needed
     for item in cols_to_skip:
-        df[item["col"]] = df.apply(
-            lambda row: run_or_skip(
+        def apply_and_track(row):
+            value, skipped = run_or_skip(
                 row,
                 item["col"], 
                 item["func"], 
                 item.get("args", []),
                 item.get("condition", None)
-            ),
-            axis=1
-        )
+            )
+            if skipped:
+                skip_report[item["col"]].append(row.get("name", row.name))
+            return value
+        df[item["col"]] = df.apply(apply_and_track, axis=1)
+    # Print or return skip_report as needed
+    print("Skip report:")
+    for col, skipped_names in skip_report.items():
+        print(f"{col}: {skipped_names}")
     return df
 
-cols_to_skip_1 = [
+cols_to_skip_all = [
+    # LinkedIn JSON columns
     {
         "col": "linkedin_json_raw",
         "func": gemini_call_with_pt,
@@ -98,177 +108,246 @@ cols_to_skip_1 = [
         "func": gemini_call_with_pt,
         "args": [Col("linkedin_education_dump"), linkedin_education_prompt, linkedin_scraper_sys_prompt],
     },
+    # Cleaned and parsed columns
+    {
+        "col": "linkedin_json_cleaned",
+        "func": clean_json_response,
+        "args": [Col("linkedin_json_raw")],
+    },
+    {
+        "col": "linkedin_jobs",
+        "func": parse_linkedin_jobs,
+        "args": [Col("linkedin_json_cleaned")],
+    },
+    {
+        "col": "linkedin_education_cleaned",
+        "func": clean_json_response,
+        "args": [Col("linkedin_education_raw")],
+    },
+    {
+        "col": "linkedin_education",
+        "func": parse_linkedin_education,
+        "args": [Col("linkedin_education_cleaned")],
+    },
+    # All companies and job titles
+    {
+        "col": "all_companies",
+        "func": get_all_companies,
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "all_job_titles",
+        "func": get_all_job_titles,
+        "args": [Col("linkedin_jobs")],
+    },
+    # Current working info
+    {
+        "col": "current_company",
+        "func": get_current_company,
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "current_title",
+        "func": get_current_title,
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "current_job_start_date",
+        "func": get_current_start_date,
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "time_in_current_role",
+        "func": calculate_duration,
+        "args": [Col("current_job_start_date"), "Present"],
+        "condition": lambda row: row.get("current_job_start_date") is not None,
+    },
+    # Founder info
+    {
+        "col": "is_founder",
+        "func": is_founder_role,
+        "args": [Col("current_title")],
+    },
+    {
+        "col": "founder_persona",
+        "func": classify_founder_persona,
+        "args": [Col("all_job_titles")],
+    },
+    # Education info
+    {
+        "col": "top_education_summary",
+        "func": extract_top_education_info,
+        "args": [Col("linkedin_education")],
+    },
+    {
+        "col": "top_degree",
+        "func": lambda summary: summary.get("top_degree") if summary else None,
+        "args": [Col("top_education_summary")],
+    },
+    {
+        "col": "top_degree_label",
+        "func": lambda summary: summary.get("top_degree_label") if summary else None,
+        "args": [Col("top_education_summary")],
+    },
+    {
+        "col": "top_institution",
+        "func": lambda summary: summary.get("top_institution") if summary else None,
+        "args": [Col("top_education_summary")],
+    },
+    {
+        "col": "top_degree_end_date",
+        "func": lambda summary: summary.get("top_degree_end_date") if summary else None,
+        "args": [Col("top_education_summary")],
+    },
+    #Classifier matches
+    {
+        "col": "was_in_accelerator",
+        "func": lambda all_companies: classifier_matches(all_companies, ACCELERATORS)[0],
+        "args": [Col("all_companies")],
+    },
+    {
+        "col": "accelerator_companies_in",
+        "func": lambda all_companies: classifier_matches(all_companies, ACCELERATORS)[1],
+        "args": [Col("all_companies")],
+    },
+    {
+        "col": "was_in_scaleup",
+        "func": lambda all_companies: classifier_matches(all_companies, SCALE_UPS)[0],
+        "args": [Col("all_companies")],
+    },
+    {
+        "col": "scaleup_companies_in",
+        "func": lambda all_companies: classifier_matches(all_companies, SCALE_UPS)[1],
+        "args": [Col("all_companies")],
+    },
+    {
+        "col": "was_in_big_tech",
+        "func": lambda all_companies: classifier_matches(all_companies, BIG_TECH)[0],
+        "args": [Col("all_companies")],
+    },
+    {
+        "col": "big_tech_companies_in",
+        "func": lambda all_companies: classifier_matches(all_companies, BIG_TECH)[1],
+        "args": [Col("all_companies")],
+    },
+    # Locations worked and migration
+    {
+        "col": "all_locations_worked",
+        "func": lambda jobs: get_all_locations_worked(jobs)[0],
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "is_migrant",
+        "func": lambda jobs: get_all_locations_worked(jobs)[1],
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "current_city",
+        "func": current_city,
+        "args": [Col("all_locations_worked")],
+    },
+    # Startup info (conditional on founder and not stealth)
+    {
+        "col": "is_stealth_mode",
+        "func": check_is_stealth_mode,
+        "args": [Col("current_company")],
+    },
+    {
+        "col": "startup_url",
+        "func": bing_find_linkedin_company_url,
+        "args": [Col("current_company"), Col("name")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "linkedin_follower_count",
+        "func": get_linkedin_company_followers_from_url,
+        "args": [Col("startup_url")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "bing_general_startup_info",
+        "func": bing_general_startup_info,
+        "args": [Col("current_company"), Col("name"), Col("current_job_start_date")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "current_startup_info",
+        "func": get_current_startup_info,
+        "args": [Col("linkedin_jobs")],
+    },
+    {
+        "col": "startup_info",
+        "func": summarise_startup_info,
+        "args": [Col("bing_general_startup_info"), Col("current_startup_info")],
+        "condition": lambda row: row.get("is_founder") and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "startup_industry",
+        "func": find_startup_industry,
+        "args": [Col("startup_info")],
+        "condition": lambda row: row.get("is_founder") and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "ai_in_product_identity",
+        "func": uses_ai,
+        "args": [Col("bing_general_startup_info")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "bing_funding_info",
+        "func": bing_funding_info,
+        "args": [Col("current_company"), Col("name"), Col("current_job_start_date")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    {
+        "col": "startup_funding_stage",
+        "func": lambda funding: "Bootstrapped" if funding is None else infer_startup_funding_stage(funding),
+        "args": [Col("bing_funding_info")],
+        "condition": lambda row: row.get("is_founder") is True and row.get("is_stealth_mode") is False,
+    },
+    # Previous founder journey
+    {
+        "col": "founder_companies",
+        "func": get_founder_companies,
+        "args": [Col("linkedin_jobs"), Col("name"), Col("is_founder"), Col("current_job_start_date")],
+    },
+    {
+        "col": "was_founder_before",
+        "func": lambda founder_companies: founder_companies is not None,
+        "args": [Col("founder_companies")],
+    },
 ]
+
 # Usage in your pipeline:
-df = cols_to_skip_if_filled(df, cols_to_skip_1)
+# Load processed names if file exists
+if os.path.exists("data/linkedin_processed.xlsx"):
+    df_processed = pd.read_excel("data/linkedin_processed.xlsx")
+    processed_names = set(df_processed["name"].astype(str))
+    # Only keep rows in df that are not already processed
+    df_new = df[~df["name"].astype(str).isin(processed_names)].copy()
+else:
+    df_processed = None
+    df_new = df.copy()
 
-# Now do everything else for getting linkedin_edu and linked_job cleaned:
-df["linkedin_json_cleaned"] = df["linkedin_json_raw"].apply(clean_json_response)
-df["linkedin_jobs"] = df["linkedin_json_cleaned"].apply(parse_linkedin_jobs)
+# Only process new names
+if not df_new.empty:
+    df_new = cols_to_skip_if_filled(df_new, cols_to_skip_all)
+    # Append new results to the old processed file (if exists)
+    if df_processed is not None:
+        df_final = pd.concat([df_processed, df_new], ignore_index=True)
+    else:
+        df_final = df_new
+else:
+    # No new names to process
+    if df_processed is not None:
+        df_final = df_processed
+    else:
+        df_final = df
 
-df["linkedin_education_cleaned"] = df["linkedin_education_raw"].apply(clean_json_response)
-df["linkedin_education"] = df["linkedin_education_cleaned"].apply(parse_linkedin_education)
-
-# Summarise all companies and titles they've had (not in final df)
-df["all_companies"] = df["linkedin_jobs"].apply(get_all_companies)
-df["all_job_titles"] = df["linkedin_jobs"].apply(get_all_job_titles)
-
-# Now functions to explore their current working situation!!!
-df["current_company"] = df["linkedin_jobs"].apply(get_current_company)
-df["current_title"] = df["linkedin_jobs"].apply(get_current_title)
-df["current_job_start_date"] = df["linkedin_jobs"].apply(get_current_start_date)
-df["time_in_current_role"] = df.apply(
-    lambda row: calculate_duration(row["current_job_start_date"], "Present")
-    if row["current_job_start_date"] != None else None,
-    axis = 1
-)
-
-# Get all founder information for current startup!!!
-df["is_founder"] = df["current_title"].apply(is_founder_role)
-df["founder_persona"] = df["all_job_titles"].apply(classify_founder_persona)
-
-# get information about education 
-df["top_education_summary"] = df["linkedin_education"].apply(extract_top_education_info) # will remove later
-df["top_degree"] = df["top_education_summary"].apply(lambda x: x.get("top_degree") if x else None)
-df["top_degree_label"] = df["top_education_summary"].apply(lambda x: x.get("top_degree_label") if x else None)
-df["top_institution"] = df["top_education_summary"].apply(lambda x: x.get("top_institution") if x else None)
-df["top_degree_end_date"] = df["top_education_summary"].apply(lambda x: x.get("top_degree_end_date") if x else None)
-
-# more info about the individual
-df[["was_in_accelerator", "accelerator_companies_in"]] = df["all_companies"].apply(
-    lambda all_companies: pd.Series(classifier_matches(all_companies, ACCELERATORS))
-)
-df[["was_in_scaleup", "scaleup_companies_in"]] = df["all_companies"].apply(
-    lambda all_companies: pd.Series(classifier_matches(all_companies, SCALE_UPS))
-)
-df[["was_in_big_tech", "big_tech_companies_in"]] = df["all_companies"].apply(
-    lambda all_companies: pd.Series(classifier_matches(all_companies, BIG_TECH))
-)
-df[["all_locations_worked", "is_migrant"]] = df["linkedin_jobs"].apply(
-    lambda jobs: pd.Series(get_all_locations_worked(jobs))
-)
-df["current_city"] = df["all_locations_worked"].apply(current_city)
-
-# get startup info!!!!!!:
-df["is_stealth_mode"]=df["current_company"].apply(check_is_stealth_mode)
-# df["startup_url"] = df.apply(
-#     lambda row: bing_find_linkedin_company_url(
-#         row["current_company"],
-#         row["name"]
-#     ) if row["is_founder"] is True 
-#     and row["is_stealth_mode"] is False else None,
-#     axis=1
-# )
-df["startup_url"] = df.apply(
-    lambda row: bing_find_linkedin_company_url(
-            row["current_company"],
-            row["name"]
-        ) 
-    if row["is_founder"] is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-
-df["linkedin_follower_count"] = df.apply(
-    lambda row: get_linkedin_company_followers_from_url(
-        row["startup_url"]
-    ) 
-    if row["is_founder"] is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-df["current_startup_info"] = df["linkedin_jobs"].apply(get_current_startup_info) # will remove later
-# Search for funding info only if person is a founder at their current company
-df["bing_general_startup_info"] = df.apply(
-    lambda row: bing_general_startup_info(
-        startup_name=row["current_company"],
-        founder_name=row["name"],
-        current_job_start_date=row["current_job_start_date"]
-    ) if row["is_founder"] is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-) # WILL REMOVE LATER THIS IS JUST BING!!!
-df["startup_info"] = df.apply(
-    lambda row: summarise_startup_info(
-        row.get("bing_general_startup_info"), 
-        row.get("current_startup_info")
-        )
-    if row.get("is_founder") 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-# Apply to DataFrame
-df["startup_industry"] = df.apply(
-    lambda row: find_startup_industry(row.get("startup_info"))
-    if row.get("is_founder") 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-df["ai_in_product_identity"] = df.apply(
-    lambda row: uses_ai(
-        row["bing_general_startup_info"]
-    ) if row["is_founder"] is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-# get funding info: search for funding info only if person is a founder at their current company
-df["bing_funding_info"] = df.apply(
-    lambda row: bing_funding_info(
-        startup_name=row["current_company"],
-        founder_name=row["name"],
-        current_job_start_date=row["current_job_start_date"]
-    ) if row["is_founder"] is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-df["startup_funding_stage"] = df.apply(
-    lambda row: (
-        "Bootstrapped" if row.get("bing_funding_info") is None
-        else infer_startup_funding_stage(row["bing_funding_info"])
-    ) if row.get("is_founder") is True 
-    and row["is_stealth_mode"] is False else None,
-    axis=1
-)
-
-############## ABOUT PREVIOUS STARTUP JOURNEY - # will remove later
-# df["founder_count"] = df["all_job_titles"].apply(count_founder_roles)
-# df["was_founder_before"] = df.apply(
-#     lambda row: was_founder_before_from_count(
-#         row["is_founder"],
-#         row["founder_count"]),
-#     axis=1)
-
-# get info for all previous startups too!!!
-df["founder_companies"] = df.apply(
-    lambda x: get_founder_companies(
-        x["linkedin_jobs"],
-        x["name"],
-        x["is_founder"],
-        x["current_job_start_date"]),
-    axis =1)
-#df["founder_companies"][2]
-
-df["was_founder_before"] = df.apply(
-    lambda row: row["founder_companies"] is not None,
-    axis=1)
-
-df.to_excel("data/linkedin_processed.xlsx", index=False)
-cols_to_drop = ["linkedin_job_dump",
-                "linkedin_education_dump",
-                "linkedin_json_raw",
-                "linkedin_json_cleaned",
-                "linkedin_education_raw",
-                "linkedin_education_cleaned",
-                "current_startup_info",
-                "all_locations_worked",
-                "top_education_summary",
-                "bing_funding_info",
-                "bing_general_startup_info"
-                ]
-html = df.drop(cols_to_drop, axis=1).to_html()
+# Save and export as before
+df_final.to_excel("data/linkedin_processed.xlsx", index=False)
 with open("table_view.html", "w", encoding="utf-8") as f:
-    f.write(df.to_html())
-
+    f.write(df_final.to_html())
 
     ### ADD TAG "SERIAL FOUNDER"
 

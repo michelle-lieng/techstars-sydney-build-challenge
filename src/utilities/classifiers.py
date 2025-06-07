@@ -23,5 +23,5 @@ ACCELERATORS = {
 }
 
 STEALTH_MODE = {
-    "stealth startup"
+    "stealth startup", "stealth", "stealthstealth"
 }
