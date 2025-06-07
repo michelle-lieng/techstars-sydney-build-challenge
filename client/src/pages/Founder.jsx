@@ -14,7 +14,6 @@ export default function FounderProfile() {
         setLoading(true);
         setError(null);
         
-        // Replace with your actual API endpoint
         const response = await fetch(`/api/founders/${founderId}`);
         
         if (!response.ok) {
@@ -35,7 +34,6 @@ export default function FounderProfile() {
         fetchFounderData();
     }
     }, [founderId]);
-
     // Helper function to check if a value exists and is not empty
     const hasValue = (value) => {
     if (value === null || value === undefined) return false;
@@ -136,6 +134,15 @@ export default function FounderProfile() {
                         </p>
                     </div>
                     )}
+
+                    {(hasValue(founderData.linkedin_follower_count)) && (
+                        <div className="mb-3">
+                            <h6 className="text-uppercase text-muted small">Linkedin Follower Count</h6>
+                            <p className="mb-0">
+                                {founderData.linkedin_follower_count}
+                            </p>
+                        </div>       
+                    )}
                     
                     {/* Current Startup - Only show if is_current_founder is true */}
                     {founderData.is_current_founder === 1 && (
@@ -190,7 +197,7 @@ export default function FounderProfile() {
 
                             {founderData.was_in_accelerator === 1 && hasValue(founderData.accelerators_worked_in) && (
                             <p className="mb-0">
-                                Accelerator:{" "}
+                                {" "}
                                 {Array.isArray(founderData.accelerators_worked_in)
                                 ? founderData.accelerators_worked_in.join(', ')
                                 : JSON.parse(founderData.accelerators_worked_in).join(', ')
@@ -201,7 +208,7 @@ export default function FounderProfile() {
 
                             {founderData.was_in_scaleup === 1 && hasValue(founderData.scaleups_worked_in) && (
                             <p className="mb-0">
-                                Scaleup:{" "}
+                                {" "}
                                 {Array.isArray(founderData.scaleups_worked_in)
                                 ? founderData.scaleups_worked_in.join(', ')
                                 : JSON.parse(founderData.scaleups_worked_in).join(', ')
@@ -290,37 +297,13 @@ export default function FounderProfile() {
                 </div>
                 <div className="card-body">
                     {/* Founded Companies */}
-                    {hasValue(founderData.all_founded_companies) && (
-                    <div className="mb-4">
-                        <h6 className="text-uppercase text-muted small">Founded Companies</h6>
-                        <ul className="list-unstyled">
-                        {(Array.isArray(founderData.all_founded_companies)
-                            ? founderData.all_founded_companies
-                            : JSON.parse(founderData.all_founded_companies)
-                        ).map((company, index) => (
-                            <li key={index} className="mb-2">
-                            {typeof company === 'string' ? (
-                                company
-                            ) : (
-                                <>
-                                <strong>{company.name}</strong>
-                                {company.year && <span className="text-muted ms-2">({company.year})</span>}
-                                {company.exit && <span className="badge bg-success ms-2">{company.exit}</span>}
-                                {company.status && <span className="badge bg-primary ms-2">{company.status}</span>}
-                                </>
-                            )}
-                            </li>
-                        ))}
-                        </ul>
-                    </div>
-                    )}
                     
                     {/* Previous Companies */}
                     {(founderData.was_in_accelerator === 1 || 
                     founderData.was_in_scaleup === 1 || 
                     founderData.was_in_bigtech === 1) && (
                     <div className="mb-4">
-                        <h6 className="text-uppercase text-muted small">Previous Companies</h6>
+                        <h6 className="text-uppercase text-muted small">Previous Startups</h6>
 
                         {founderData.was_in_accelerator === 1 && hasValue(founderData.accelerators_worked_in) && (
                         <p>
@@ -381,6 +364,40 @@ export default function FounderProfile() {
                     )}
                 </div>
                 </div>
+
+                
+                {hasValue(founderData.all_founded_companies) && (
+                    <div className="card shadow-sm mb-4">
+                        <div className="card-header bg-light">
+                            <h5 className="card-title mb-0">Founder Experience</h5>
+                        </div>
+                    <div className="card-body">
+                        
+                        <div className="mb-4">
+                            <h6 className="text-uppercase text-muted small">Founded Companies</h6>
+                            <ul className="list-unstyled">
+                            {(Array.isArray(founderData.all_founded_companies)
+                                ? founderData.all_founded_companies
+                                : JSON.parse(founderData.all_founded_companies)
+                            ).map((company, index) => (
+                                <li key={index} className="mb-3">
+                                {typeof company === 'string' ? (
+                                    company
+                                ) : (
+                                    <div>
+                                    <div><strong>Startup:</strong> <a href={company.startup_url} target="_blank" rel="noopener noreferrer">{company.startup}</a></div>
+                                    {company.title && <div><strong>Title:</strong> {company.title}</div>}
+                                    {company.startup_length && <div><strong>Length:</strong> {company.startup_length}</div>}
+                                    </div>
+                                )}
+                                </li>
+                            ))}
+                            </ul>
+                        </div>
+                        
+                    </div>                   
+                    </div>
+                )}
             </div>
             </div>
         </div>

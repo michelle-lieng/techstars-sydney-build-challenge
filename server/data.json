@@ -5,21 +5,29 @@
             "linkedin_url": "https://www.linkedin.com/",
             "current_company": "Company1",
             "current_title": "Developer",
+            "current_job_start": "Jul 2024",
+            "time_in_current_role": "8 Months",
             "top_degree": "Example Degree",
             "top_degree_label": "Bachelor",
             "was_in_accelerator": "True",
+            "was_prev_founder": "True",
+            "all_founded_companies": [{"title": "Chief Technology Officer", "startup": "moodchart.ai", "startup_url": "https://www.linkedin.com/company/moodchart-ai", "start_up_linkedin_follower_count": "55", "funding_info": "Bootstrapped", "startup_length": "2 years 3 months"}, {"title": "founder", "startup": "Company3", "startup_url": "company3.com"}],
             "accelerators_worked_in": ["Antler", "The Generator"],
             "was_in_scaleup": "False",
             "was_in_bigtech": "True",
             "bigtechs_worked_in": ["Google", "Meta"],
             "gender": "Male",
-            "migrant": "True"
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": "500"
         }, 
         {
             "name": "Example Person2",
             "linkedin_url": "https://www.linkedin.com/",
             "current_company": "Company2",
             "current_title": "Founder",
+            "current_job_start": "Jan 2024",
+            "time_in_current_role": "1 Year",
             "is_current_founder": "True",
             "curr_startup_funding_stage": "Round 2",
             "curr_startup_url": "https://examplecompany2.com/",
@@ -30,12 +38,15 @@
             "all_founded_companies": ["Company2"],
             "top_degree": "Examp Degree wow",
             "top_degree_label": "PhD",
+            "top_degree_end_date": "Feb 2021",
             "was_in_accelerator": "False",
             "was_in_scaleup": "False",
             "was_in_bigtech": "True",
             "bigtechs_worked_in": ["Amazon"],
             "gender": "Female",
-            "migrant": "False"
+            "migrant": "False",
+            "is_stealth": "True",
+            "linkedin_follower_count": "700"
         }
     ]
 }

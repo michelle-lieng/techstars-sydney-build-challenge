@@ -79,7 +79,8 @@ class FounderProfileDB:
                     city VARCHAR(100),
                     current_company VARCHAR(255),
                     current_title VARCHAR(255),
-                    current_job_start DATE,
+                    current_job_start VARCHAR(50),
+                    time_in_current_role VARCHAR(255),
                     is_current_founder BOOLEAN,
                     curr_startup_funding_stage VARCHAR(255),
                     curr_startup_url VARCHAR(255),
@@ -90,7 +91,7 @@ class FounderProfileDB:
                     all_founded_companies JSON,
                     top_degree VARCHAR(100),
                     top_degree_label VARCHAR(10),
-                    top_degree_end_date DATE,
+                    top_degree_end_date VARCHAR(50),
                     was_in_accelerator BOOLEAN,
                     accelerators_worked_in JSON,
                     was_in_scaleup BOOLEAN,
@@ -100,6 +101,8 @@ class FounderProfileDB:
                     gender ENUM('Male', 'Female', 'Non-binary', 'Other', 'Prefer not to say'),
                     migrant BOOLEAN,
                     tags JSON,
+                    is_stealth BOOLEAN,
+                    linkedin_follower_count INT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                 ) ENGINE=InnoDB;
@@ -114,17 +117,17 @@ class FounderProfileDB:
                 print(f"Error creating founder profile table: {e}")
  
     def insertFounder(self, name, linkedin_url=None, city=None, current_company=None, 
-                      current_title=None, current_job_start=None, is_current_founder=False, curr_startup_funding_stage=None, 
+                      current_title=None, current_job_start=None, time_in_current_role=None, is_current_founder=False, curr_startup_funding_stage=None, 
                       curr_startup_url=None, curr_startup_info=None, curr_startup_industry=None, ai_in_curr_startup=None,
                       was_prev_founder=False, all_founded_companies=None, top_degree=None, top_degree_label=None, top_degree_end_date=None,
                       was_in_accelerator=False, accelerators_worked_in=None, was_in_scaleup=False, scaleups_worked_in=None, was_in_bigtech=False,
-                      bigtechs_worked_in=None, gender=None, migrant=False):
+                      bigtechs_worked_in=None, gender=None, migrant=False, is_stealth=False, linkedin_follower_count=0):
         with self.app.app_context():
             try:
                 cursor = self.mysql.connection.cursor()
                 tags = createTags(is_current_founder=is_current_founder, ai_in_curr_startup=ai_in_curr_startup, was_prev_founder=was_prev_founder,
                                   top_degree_label=top_degree_label,was_in_accelerator=was_in_accelerator, was_in_scaleup=was_in_scaleup,
-                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant)
+                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant, is_stealth=is_stealth)
 
                 all_founded_companies__json = json.dumps(all_founded_companies) if all_founded_companies else None
                 accelerators_worked_in__json = json.dumps(accelerators_worked_in) if accelerators_worked_in else None
@@ -135,18 +138,18 @@ class FounderProfileDB:
 
                 insert_query = """
                 INSERT INTO founder_profile (
-                    name, linkedin_url, city, current_company, current_title, current_job_start, is_current_founder, curr_startup_funding_stage,
+                    name, linkedin_url, city, current_company, current_title, current_job_start, time_in_current_role, is_current_founder, curr_startup_funding_stage,
                     curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies,
                     top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in, was_in_scaleup, scaleups_worked_in,
-                    was_in_bigtech, bigtechs_worked_in, gender, migrant, tags
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    was_in_bigtech, bigtechs_worked_in, gender, migrant, tags, is_stealth, linkedin_follower_count
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
 
                 values = (
-                    name, linkedin_url, city, current_company, current_title, current_job_start, is_current_founder, curr_startup_funding_stage,
+                    name, linkedin_url, city, current_company, current_title, current_job_start, time_in_current_role, is_current_founder, curr_startup_funding_stage,
                     curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies__json,
                     top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in__json, was_in_scaleup, scaleups_worked_in__json,
-                    was_in_bigtech, bigtechs_worked_in__json, gender, migrant, tags_json
+                    was_in_bigtech, bigtechs_worked_in__json, gender, migrant, tags_json, is_stealth, linkedin_follower_count
                 )
 
                 cursor.execute(insert_query, values)

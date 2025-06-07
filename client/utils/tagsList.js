@@ -4,5 +4,6 @@ export const tags = [
     "Accelerator",
     "Scaleup",
     "Big Tech",
-    "Migrant"
+    "Migrant",
+    "Stealth Founder"
 ]
