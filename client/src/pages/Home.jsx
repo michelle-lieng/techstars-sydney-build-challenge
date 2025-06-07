@@ -1,43 +1,14 @@
 export default function Home() {
     return (
         <main>
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-md-6">
-                        <h1 className="display-4">Discover Australia's Hidden Founders</h1>
-                        <p className="lead">Find and connect with high-potential current and future founders across Australia.</p>
-                        <p className="mb-4">Our searchable database helps you discover diverse talent that's building the next wave of innovation - from scale-up veterans to PhD researchers with IP ready to spin out.</p>
-                        <div className="d-grid gap-2 d-md-flex">
+            <div className="container mt-5 align-items-center justify-content-center">
+                <div className="row justify-content-center">
+                    <div className="col-md-6 text-center">
+                        <h1 className="display-4 text-center">Discover Australia's Hidden Founders</h1>
+                        <p className="lead text-center">Find and connect with high-potential current and future founders across Australia.</p>
+                        <p className="mb-4 text-center">Our searchable database helps you discover diverse talent that's building the next wave of innovation - from scale-up veterans to PhD researchers with IP ready to spin out.</p>
+                        <div className="d-grid gap-2 d-md-flex justify-content-center">
                             <a href="/search" className="btn btn-primary btn-lg px-4 me-md-2">Start Searching</a>
-                            <a href="/stats" className="btn btn-outline-primary btn-lg px-4">View Statistics</a>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="card shadow-lg">
-                            <div className="card-body p-4">
-                                <h2 className="card-title mb-4">Quick Search</h2>
-                                <form id="quick-search-form">
-                                    <div className="mb-3">
-                                        <label htmlFor="name" className="form-label">Name or Keyword</label>
-                                        <input type="text" className="form-control" id="name" placeholder="Enter name or keyword"/>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="city" className="form-label">City</label>
-                                        <select className="form-select" id="city">
-                                            <option value="">All Cities</option>
-                                        </select>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="tag" className="form-label">Founder Type</label>
-                                        <select className="form-select" id="tag">
-                                            <option value="">All Types</option>
-                                        </select>
-                                    </div>
-                                    <div className="d-grid">
-                                        <button type="submit" className="btn btn-primary">Search</button>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>

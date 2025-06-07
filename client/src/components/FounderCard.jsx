@@ -11,7 +11,9 @@ export default function FounderCard({ founder }) {
           <p className="text-muted mb-2">
             <i className="bi bi-geo-alt"></i> {founder.city}
           </p>
-          <p className="founder-role mb-2">{founder.current_title} at {founder.current_company}</p>
+          <p className="founder-role mb-2">{founder.current_title} at {founder.current_company} 
+                <span className="text-muted"> (Started: {founder.current_job_start})</span>
+          </p>
           <div className="founder-tags mb-3">
             {founder.tags && founder.tags.map((tag, index) => (
               <span key={index} className="badge bg-secondary me-1">{tag}</span>

@@ -1,0 +1,1488 @@
+{
+    "founders": [
+        {
+            "name": "Emmanuel (Mannie) Nsanga",
+            "linkedin_url": "https://www.linkedin.com/in/emmanuel-nsanga-88492a1b0/",
+            "city": "Australia",
+            "current_company": "Servcorp",
+            "current_title": "Startup Growth Hacker",
+            "current_job_start": "Apr-25",
+            "time_in_current_role": "2 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Chief Technology Officer",
+                    "startup": "moodchart.ai",
+                    "startup_length": "2 years 3 months"
+                }
+            ],
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "The Builders Club"
+            ],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Nathan Hu",
+            "linkedin_url": "https://www.linkedin.com/in/nathan-hu-0284511b0/",
+            "city": "Sydney",
+            "current_company": "Lorikeet",
+            "current_title": "Forward Deployed AI Engineer",
+            "current_job_start": "Dec-24",
+            "time_in_current_role": "6 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "Propagate.Ink",
+                    "startup_length": "11 months"
+                }
+            ],
+            "top_degree": "Bachelor of Commerce & Computer Science",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Startmate"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Atomi"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Pankrit Jindal",
+            "linkedin_url": "https://www.linkedin.com/in/pankrit-jindal/",
+            "city": "Sydney",
+            "current_company": "Bean",
+            "current_title": "Co-Founder",
+            "current_job_start": "Feb-24",
+            "time_in_current_role": "1 year 4 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Bean is an AI-powered recipe recommendation engine that helps users with ingredient recognition, expiration tracking, and AI-driven meal planning.",
+            "curr_startup_industry": "Consumer",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "FlipX",
+                    "startup_length": "6 months"
+                }
+            ],
+            "top_degree": "Bachelor of Science (Computer Science), Engineering",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "Sep-23",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Satya Borgohain",
+            "linkedin_url": "https://www.linkedin.com/in/satyaborg/",
+            "city": "Sydney",
+            "current_company": "Unemployed",
+            "current_title": "Unemployed",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Master's degree, Data Science (Advanced data analytics with Minor Thesis)",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2019",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Jamie Hall",
+            "linkedin_url": "https://www.linkedin.com/in/jamie-hall-30360954/",
+            "city": "Sydney",
+            "current_company": "Lorikeet",
+            "current_title": "Co-Founder",
+            "current_job_start": "Aug-23",
+            "time_in_current_role": "1 year 10 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Seed",
+            "curr_startup_info": "Lorikeet offers an AI customer support agent using a proprietary \"intelligent graph\" technology to resolve complex issues and improve customer satisfaction.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Doctor of Philosophy (Ph.D.), Economics",
+            "top_degree_label": "PhD",
+            "top_degree_end_date": "2015",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Google"
+            ],
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 3623
+        },
+        {
+            "name": "Bennett Carroll",
+            "linkedin_url": "https://www.linkedin.com/in/bennett-carroll-05a0083b/",
+            "city": "Sydney",
+            "current_company": "BizFlash",
+            "current_title": "Founder",
+            "current_job_start": "Jan-25",
+            "time_in_current_role": "5 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "BizFlash provides a customer centricity platform to help close deals and offers fast LLC formation services.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Masters Degree of International Business (MSc IB), Strategy and Innovation",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2013",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Google"
+            ],
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 56
+        },
+        {
+            "name": "Gabriele Sanguigno",
+            "linkedin_url": "https://www.linkedin.com/in/gabriele-sanguigno/",
+            "city": "Melbourne",
+            "current_company": "ToothFairyAI",
+            "current_title": "Chief Executive Officer",
+            "current_job_start": "May-23",
+            "time_in_current_role": "2 years 1 month",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "ToothFairyAI provides an AI tool that helps businesses, such as superannuation funds, assess customer financial positions.",
+            "curr_startup_industry": "Fintech",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor of Engineering (BE), Engineering/Industrial Management",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2013",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 1024
+        },
+        {
+            "name": "Henry Hagan",
+            "linkedin_url": "https://www.linkedin.com/in/henrymaddockhagan/",
+            "city": "Sydney",
+            "current_company": "ConnectWise",
+            "current_title": "Technical Sales Engineer",
+            "current_job_start": "Jan-23",
+            "time_in_current_role": "2 years 5 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Director & Co-Founder",
+                    "startup": "Moto Supply Co.",
+                    "startup_length": "5 years 2 months"
+                }
+            ],
+            "top_degree": "Bachelor\u0092s Degree, Digital Media",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2015",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Rohan Agarwal",
+            "linkedin_url": "https://www.linkedin.com/in/agarwal-r/",
+            "current_company": "Stealth Startup",
+            "current_title": "Founder",
+            "current_job_start": "May-25",
+            "time_in_current_role": "1 month",
+            "is_current_founder": "True",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder and Vice President of Growth",
+                    "startup": "Google Developer Student Club - UNSW",
+                    "startup_length": "7 months"
+                }
+            ],
+            "top_degree": "Bachelor of Engineering, Software (Co-op)",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Build Club",
+                "Startmate",
+                "UNSW Founders"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Atlassian"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "True"
+        },
+        {
+            "name": "Simran Nandan",
+            "linkedin_url": "https://www.linkedin.com/in/simran-nandan/",
+            "city": "Australia",
+            "current_company": "Character Digital",
+            "current_title": "Senior Account Manager",
+            "current_job_start": "Oct-24",
+            "time_in_current_role": "8 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "International Baccalaureate",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "IBM"
+            ],
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Henry Badgery",
+            "linkedin_url": "https://www.linkedin.com/in/hbadgery/",
+            "city": "Sydney",
+            "current_company": "Fourday",
+            "current_title": "Founder - AI Engineer",
+            "current_job_start": "May-24",
+            "time_in_current_role": "1 year 1 month",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "FourDay helps businesses implement AI-powered automation and strategies to improve efficiency and move towards a four-day work week.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "MatesRates",
+                    "startup_length": "1 year"
+                },
+                {
+                    "title": "Co-Founder",
+                    "startup": "Grisp",
+                    "startup_length": "2 years"
+                }
+            ],
+            "top_degree": "Bachelor\u0092s Degree, Bachelor of Commerce (Liberal Studies), majoring in Finance and Computer Science",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Startmate"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 354
+        },
+        {
+            "name": "Alisa Wu",
+            "linkedin_url": "https://www.linkedin.com/in/wualisa/",
+            "current_company": "Stealth",
+            "current_title": "Founder",
+            "current_job_start": "Apr-25",
+            "time_in_current_role": "2 months",
+            "is_current_founder": "True",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "Stella AI",
+                    "startup_length": "9 months"
+                }
+            ],
+            "top_degree": "Bachelor of Science and Advanced Studies (Dalyell Scholar)",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2025",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Atlassian",
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "True"
+        },
+        {
+            "name": "Andrew Suryanto",
+            "linkedin_url": "https://www.linkedin.com/in/andrew-suryanto-aleyes/",
+            "city": "Sydney",
+            "current_company": "Relevance AI",
+            "current_title": "Mid Level AI Solutions Engineer",
+            "current_job_start": "Oct-24",
+            "time_in_current_role": "8 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "Airal",
+                    "startup_length": "11 months"
+                }
+            ],
+            "top_degree": "Bachelor of Engineering - BE, Computer Science & Mechatronics Engineering",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2024",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Becca Williams",
+            "linkedin_url": "https://www.linkedin.com/in/becca9941/",
+            "city": "Sydney",
+            "current_company": "Relevance AI",
+            "current_title": "AI Growth Engineer",
+            "current_job_start": "May-24",
+            "time_in_current_role": "1 year 1 month",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "The Builders Club"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Jacky Koh",
+            "linkedin_url": "https://www.linkedin.com/in/jacky-koh/",
+            "city": "Sydney",
+            "current_company": "Relevance AI",
+            "current_title": "Founder & co-CEO",
+            "current_job_start": "Mar-20",
+            "time_in_current_role": "5 years 3 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Series B",
+            "curr_startup_info": "Relevance AI provides a platform for businesses to build and deploy autonomous AI agents, creating an AI workforce.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor of Actuarial Studies and Science, (Major in Statistics)",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Relevance AI"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 27173
+        },
+        {
+            "name": "Nivaaz Sehmbhi",
+            "linkedin_url": "https://www.linkedin.com/in/nivaaz/",
+            "city": "Sydney",
+            "current_company": "Beyond Besties",
+            "current_title": "Founder",
+            "current_job_start": "Feb-24",
+            "time_in_current_role": "1 year 4 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Beyond Besties is a community that hosts hybrid events and workshops for women to discuss and learn about topics like finance, crypto, and mindset.",
+            "curr_startup_industry": "Consumer",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Creator & Founder",
+                    "startup": "sukara.tech",
+                    "startup_length": "1 year 7 months"
+                }
+            ],
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Startmate",
+                "Antler"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Immutable",
+                "Eucalyptus",
+                "Canva"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 69
+        },
+        {
+            "name": "Cinthya Zurita",
+            "linkedin_url": "https://www.linkedin.com/in/cinthya-zurita-88014b135/",
+            "city": "Sydney",
+            "current_company": "Ladymates Collective",
+            "current_title": "Founding Member & Operations Circle Lead",
+            "current_job_start": "Sep-24",
+            "time_in_current_role": "9 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Ladymates provides professional development and community for women in the ANZ startup ecosystem through coaching, mentorship, workshops, and peer support.",
+            "curr_startup_industry": "Education",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Chief of Staff",
+                    "startup": "JPS Audit Specialists",
+                    "startup_length": "1 year 1 month"
+                }
+            ],
+            "top_degree": "Master of International Business, Business",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2020",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Isabelle De Backer",
+            "linkedin_url": "https://www.linkedin.com/in/isabelledebacker/",
+            "city": "Sydney",
+            "current_company": "Redactive",
+            "current_title": "Software Engineer",
+            "current_job_start": "Aug-24",
+            "time_in_current_role": "10 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Master's degree, Complex Systems",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2024",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "The Builders Club"
+            ],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Mas Abdi",
+            "linkedin_url": "https://www.linkedin.com/in/masabdi/",
+            "city": "Sydney",
+            "current_company": "NextDocs",
+            "current_title": "Founder",
+            "current_job_start": "Jun-24",
+            "time_in_current_role": "1 year",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "NextDocs provides AI-powered software that helps companies, particularly those in life sciences, create, manage, and maintain compliant documents and content.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "Easy Apply",
+                    "startup_length": "1 year 4 months"
+                }
+            ],
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Antler"
+            ],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 47
+        },
+        {
+            "name": "Eli Simic",
+            "linkedin_url": "https://www.linkedin.com/in/eli-simic/",
+            "city": "Sydney",
+            "current_company": "Cashrewards",
+            "current_title": "Data Scientist / AI Engineer",
+            "current_job_start": "Sep-24",
+            "time_in_current_role": "9 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Masters in Data Science, Data Science",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2022",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Sam Elderfield",
+            "linkedin_url": "https://www.linkedin.com/in/samelderfield/",
+            "city": "Sydney",
+            "current_company": "ScaleUp Recruitment",
+            "current_title": "Director",
+            "current_job_start": "Sep-21",
+            "time_in_current_role": "3 years 9 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Adam Ma",
+            "linkedin_url": "https://www.linkedin.com/in/boqian-ma/",
+            "city": "Sydney",
+            "current_company": "Voqo AI",
+            "current_title": "Founder & CEO",
+            "current_job_start": "May-24",
+            "time_in_current_role": "1 year 1 month",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Voqo AI provides real estate companies with a 24/7 voice AI assistant that handles inbound calls to capture missed opportunities.",
+            "curr_startup_industry": "Real Estate and Construction",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "High School Diploma",
+            "top_degree_label": "Non-traditional",
+            "top_degree_end_date": "2018",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Microsoft"
+            ],
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 405
+        },
+        {
+            "name": "Javed Sheikh",
+            "linkedin_url": "https://www.linkedin.com/in/javed-sheikh-43025a19/",
+            "city": "Sydney",
+            "current_company": "Bupa Global",
+            "current_title": "Lead Engineer",
+            "current_job_start": "Aug-24",
+            "time_in_current_role": "10 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder| Chief technology Officer",
+                    "startup": "Avert AI",
+                    "startup_length": "7 months"
+                }
+            ],
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Tiffany Guan",
+            "linkedin_url": "https://www.linkedin.com/in/tiffanyguan/",
+            "current_company": "Capyble",
+            "current_title": "Co-Founder and CTO",
+            "current_job_start": "Oct-23",
+            "time_in_current_role": "1 year 8 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Capyble provides technology-enabled tools and expert support to help businesses proactively address workplace issues like harassment, gender equity, and domestic violence.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Chief Data Scientist",
+                    "startup": "attract.ai",
+                    "startup_length": "1 year 5 months"
+                },
+                {
+                    "title": "Co-Founder",
+                    "startup": "Delta AI",
+                    "startup_length": "11 months"
+                }
+            ],
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "IBM"
+            ],
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 506
+        },
+        {
+            "name": "Anita Da Encarnacao",
+            "linkedin_url": "https://www.linkedin.com/in/anita-da-encarnacao-35457b20/",
+            "city": "Sydney",
+            "current_company": "Aretex",
+            "current_title": "Principal",
+            "current_job_start": "Mar-22",
+            "time_in_current_role": "3 years 3 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Xero"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Meryl Johnston",
+            "linkedin_url": "https://www.linkedin.com/in/meryl-johnston-3a483728/",
+            "city": "Gold Coast",
+            "current_company": "Air Accounting",
+            "current_title": "Client Success Manager - eCommerce",
+            "current_job_start": "Jun-24",
+            "time_in_current_role": "1 year",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder and CEO",
+                    "startup": "Bean Ninjas",
+                    "startup_length": "6 years 5 months"
+                },
+                {
+                    "title": "Co-founder",
+                    "startup": "Crossbeam App",
+                    "startup_length": "1 year 9 months"
+                },
+                {
+                    "title": "Co-founder",
+                    "startup": "Dr Know",
+                    "startup_length": "6 months"
+                }
+            ],
+            "top_degree": "Bachelor of Commerce, Accounting, Economics and Management",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2006",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Xero"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Prem Naraindas",
+            "linkedin_url": "https://www.linkedin.com/in/premnaraindas/",
+            "city": "Sydney",
+            "current_company": "Katonic.ai",
+            "current_title": "Founder & CEO",
+            "current_job_start": "Apr-20",
+            "time_in_current_role": "5 years 2 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Katonic provides an enterprise MLOps platform that helps businesses deploy and manage AI and machine learning solutions.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "BACHELOR OF ENGINEERING, Chemical",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2001",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Will Ashford",
+            "linkedin_url": "https://www.linkedin.com/in/williamashford/",
+            "city": "Sydney",
+            "current_company": "TrueState",
+            "current_title": "Founder & CEO",
+            "current_job_start": "Jan-23",
+            "time_in_current_role": "2 years 5 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Pre Seed",
+            "curr_startup_info": "TrueState enables non-technical teams to rapidly build and configure AI solutions using pre-built templates integrated with operational data for use cases like predicting machinery failure or preventing customer churn.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "MSc, Smart Cities and Urban Analytics",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2017",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 1047
+        },
+        {
+            "name": "Richard Eve",
+            "linkedin_url": "https://www.linkedin.com/in/richard-eve-545179138/",
+            "city": "Sydney",
+            "current_company": "Eucalyptus",
+            "current_title": "Senior Product Manager | AI Product Lead",
+            "current_job_start": "Jan-25",
+            "time_in_current_role": "5 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "Continuous",
+                    "startup_length": "3 months"
+                },
+                {
+                    "title": "Founder",
+                    "startup": "Alive Sydney",
+                    "startup_length": "1 year 9 months"
+                }
+            ],
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Antler"
+            ],
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Eucalyptus"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Charlie Gearside",
+            "linkedin_url": "https://www.linkedin.com/in/charlie-gearside-4914a139/",
+            "city": "Sydney",
+            "current_company": "Eucalyptus",
+            "current_title": "Co-founder, advisor",
+            "current_job_start": "Nov-24",
+            "time_in_current_role": "7 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Growth",
+            "curr_startup_info": "Eucalyptus is committed to democratizing healthcare by providing accessible and patient-centered care.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "Eucalyptus",
+                    "startup_length": "5 years 11 months"
+                },
+                {
+                    "title": "Co-founder & GM",
+                    "startup": "Pilot",
+                    "startup_length": "5 years 7 months"
+                },
+                {
+                    "title": "Founder",
+                    "startup": "Petflair",
+                    "startup_length": "1 year 5 months"
+                },
+                {
+                    "title": "Founder / Illustrator",
+                    "startup": "CGI Automotive",
+                    "startup_length": "3 years 5 months"
+                }
+            ],
+            "top_degree": "Bachelor of Design, COFA",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2012",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Eucalyptus"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 38679
+        },
+        {
+            "name": "Justin Wong",
+            "linkedin_url": "https://www.linkedin.com/in/justin-wong-75724727/",
+            "city": "Sydney",
+            "current_company": "Eucalyptus",
+            "current_title": "Chief Financial Officer",
+            "current_job_start": "Jan-24",
+            "time_in_current_role": "1 year 5 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Eucalyptus is transitioning from an obesity-focused business to a service-based all-of-care business.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor of Commerce (B.Com.), Accounting and Finance",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Eucalyptus"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Tim Doyle",
+            "linkedin_url": "https://www.linkedin.com/in/tim-doyle-11b48a14/",
+            "city": "Greater Sydney Area",
+            "current_company": "Eucalyptus",
+            "current_title": "Founder",
+            "current_job_start": "Feb-19",
+            "time_in_current_role": "6 years 4 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Eucalyptus is a telehealth startup that provides digital clinics for patients in multiple countries.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Combined Bachelor of Commerce Bachelor of Arts, Management, Marketing, Political Economy, Government/ International Relations",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2013",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Eucalyptus"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 38679
+        },
+        {
+            "name": "Victor Wong",
+            "linkedin_url": "https://www.linkedin.com/in/wong-v/",
+            "city": "Sydney",
+            "current_company": "Jaffle Labs Pty Ltd",
+            "current_title": "Co-Founder",
+            "current_job_start": "Jun-23",
+            "time_in_current_role": "2 years",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Jaffle Labs provides AI-powered tools to increase productivity and improve the quality of legal work, enabling lawyers to focus on client interaction.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Master\u0092s Degree, Masters of Information Technology",
+            "top_degree_label": "Masters",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Google"
+            ],
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Tom Alder",
+            "linkedin_url": "https://www.linkedin.com/in/tom-alder/",
+            "city": "Sydney",
+            "current_company": "Strategy Breakdowns",
+            "current_title": "Founder",
+            "current_job_start": "Jun-23",
+            "time_in_current_role": "2 years",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Strategy Breakdowns delivers a weekly email providing strategy playbooks and growth hacks from successful companies.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Graduate Diploma of Legal Practice, Law",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2020",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Atlassian"
+            ],
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Matthew Smith",
+            "linkedin_url": "https://www.linkedin.com/in/matthew-smith-86142a35/",
+            "city": "Sydney",
+            "current_company": "goodwork",
+            "current_title": "Co-Founder",
+            "current_job_start": "Jan-23",
+            "time_in_current_role": "2 years 5 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "GoodWork.ai provides an AI-powered platform that enables real-time data analysis of sales for retail merchandise, finance, and operations teams.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "MSc International Economics and Global Politics (Dux)",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2013",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 387
+        },
+        {
+            "name": "Justin Liang",
+            "linkedin_url": "https://www.linkedin.com/in/heyjustinliang/",
+            "city": "Greater Sydney Area",
+            "current_company": "Inspace",
+            "current_title": "CEO",
+            "current_job_start": "Feb-18",
+            "time_in_current_role": "7 years 4 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Inspace provides property visualization technology and services, including software that simulates architectural designs, allowing users to virtually walk through spaces.",
+            "curr_startup_industry": "Real Estate and Construction",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "CEO & Co-founder",
+                    "startup": "BR Entertainment",
+                    "startup_length": "1 year 7 months"
+                }
+            ],
+            "top_degree": "Bachelor's Degree, Economics",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 4999
+        },
+        {
+            "name": "Daniel Han",
+            "linkedin_url": "https://www.linkedin.com/in/danielhanchen/",
+            "city": "Australia",
+            "current_company": "Unsloth AI",
+            "current_title": "CEO",
+            "current_job_start": "Dec-23",
+            "time_in_current_role": "1 year 6 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Seed",
+            "curr_startup_info": "Unsloth AI provides a platform for developers and researchers to fine-tune large language models (LLMs) faster and more efficiently.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Director Of Education & Cofounder",
+                    "startup": "UNSW Data Science Society",
+                    "startup_length": "1 year 9 months"
+                }
+            ],
+            "top_degree": "Bachelor of Data Science, Algorithms & AI",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2019",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Kiet Tran",
+            "linkedin_url": "https://www.linkedin.com/in/supitspete/",
+            "current_company": "Stealth Startup",
+            "current_title": "Co-Founder",
+            "current_job_start": "Dec-24",
+            "time_in_current_role": "6 months",
+            "is_current_founder": "True",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "DoryAI",
+                    "startup_length": "4 months"
+                }
+            ],
+            "top_degree": "Bachelor's degree, Computer Software Engineering",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "Feb-27",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Build Club"
+            ],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "True"
+        },
+        {
+            "name": "Kevin Zheng",
+            "linkedin_url": "https://www.linkedin.com/in/kevzhengkz/",
+            "city": "Sydney",
+            "current_company": "Deloitte",
+            "current_title": "Senior Manager",
+            "current_job_start": "Jul-24",
+            "time_in_current_role": "11 months",
+            "is_current_founder": "False",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder",
+                    "startup": "ReadyBooked",
+                    "startup_length": "4 years"
+                },
+                {
+                    "title": "Founding Team",
+                    "startup": "scalene.xyz",
+                    "startup_length": "1 year 3 months"
+                }
+            ],
+            "top_degree": "Bachelor of Information Systems (Co-op), Business Information Technology",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2016",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Kristi Knaack Riordan",
+            "linkedin_url": "https://www.linkedin.com/in/kristiknaackriordan/",
+            "city": "Sydney",
+            "current_company": "Harvest B",
+            "current_title": "Co-Founder",
+            "current_job_start": "2020",
+            "time_in_current_role": "Invalid start date",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Seed",
+            "curr_startup_info": "Harvest B is an Australian startup producing plant-based meat ingredients.",
+            "curr_startup_industry": "Consumer",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Global Chief Operating Officer & Managing Director, APAC at Flatiron School",
+                    "startup": "WeWork",
+                    "startup_length": "Invalid start date"
+                },
+                {
+                    "title": "Global Chief Operating Officer & Managing Director APAC",
+                    "startup": "The Flatiron School",
+                    "startup_length": "Invalid end date"
+                }
+            ],
+            "top_degree": "Bachelor of Science - Accounting",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "True",
+            "accelerators_worked_in": [
+                "Startmate"
+            ],
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 3282
+        },
+        {
+            "name": "Dylan Coyne",
+            "linkedin_url": "https://www.linkedin.com/in/coyney/",
+            "city": "Sydney",
+            "current_company": "updoc",
+            "current_title": "Founder",
+            "current_job_start": "Mar-21",
+            "time_in_current_role": "4 years 3 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Updoc is an Australian telehealth platform connecting users with healthcare professionals for consultations.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "Jot",
+                    "startup_length": "5 years 7 months"
+                },
+                {
+                    "title": "Founder",
+                    "startup": "Washable",
+                    "startup_length": "1 year 7 months"
+                }
+            ],
+            "top_degree": "Bachelor of Information Technology (Co-Op Program), Information Technology",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2016",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Uber",
+                "IBM"
+            ],
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 13853
+        },
+        {
+            "name": "James Giacoumakis",
+            "linkedin_url": "https://www.linkedin.com/in/james-giacoumakis-405012242/",
+            "city": "Sydney",
+            "current_company": "ModelUpdater",
+            "current_title": "Founder",
+            "current_job_start": "Sep-24",
+            "time_in_current_role": "9 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "ModelUpdater automates financial model updates with complete accuracy by using a deterministic algorithm and integrated AI to map data.",
+            "curr_startup_industry": "Fintech",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "Shoutout",
+                    "startup_length": "2 years"
+                }
+            ],
+            "top_degree": "Bachelor's degree, Economics",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Alice Williams",
+            "linkedin_url": "https://www.linkedin.com/in/alice-williams-28465b147/",
+            "city": "Sydney",
+            "current_company": "OviraOvira",
+            "current_title": "Founder",
+            "current_job_start": "2020",
+            "time_in_current_role": "Invalid start date",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "This startup aims to make healthcare more equitable.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Ebon Bokody",
+            "linkedin_url": "https://www.linkedin.com/in/ebon-bokody-6949a94b/",
+            "city": "Sydney",
+            "current_company": "Exponential Trading",
+            "current_title": "Founder, CEO",
+            "current_job_start": "Mar-13",
+            "time_in_current_role": "12 years 3 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Exponential Trading is a proprietary trading firm in Sydney that uses its own capital to trade equities, derivatives, and currencies in the Asia Pacific markets.",
+            "curr_startup_industry": "Fintech",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor of Mathematics and Information Technology",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2005",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 5017
+        },
+        {
+            "name": "Siddharth Raja",
+            "linkedin_url": "https://www.linkedin.com/in/sidraja/",
+            "city": "Greater Sydney Area",
+            "current_company": "Executive Traveller",
+            "current_title": "CEO",
+            "current_job_start": "Jul-19",
+            "time_in_current_role": "5 years 11 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Executive Traveller provides news, reviews, and expert guides for business travelers and premium frequent flyers.",
+            "curr_startup_industry": "Consumer",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder/Director",
+                    "startup": "Australian Business Traveller",
+                    "startup_length": "8 years 10 months"
+                }
+            ],
+            "top_degree": "Bachelor of Engineering (B.Eng.), Electrical and Electronics Engineering",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2005",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 5140
+        },
+        {
+            "name": "Grace Brown",
+            "linkedin_url": "https://www.linkedin.com/in/grace-brown-619b59161/",
+            "current_company": "AndromedaAndromeda",
+            "current_title": "CEO, Co-Founder, Engineer",
+            "current_job_start": "Apr-22",
+            "time_in_current_role": "3 years 2 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "The startup develops companion humanoid robots to provide social and mental support.",
+            "curr_startup_industry": "Healthcare",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor's degree, Mechatronics, Robotics, and Automation Engineering",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "Dec-21",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False"
+        },
+        {
+            "name": "Nicole Robinson",
+            "linkedin_url": "https://www.linkedin.com/in/nicole-robinson-1b6b47a8/",
+            "city": "Melbourne",
+            "current_company": "LYRO Robotics",
+            "current_title": "Co-Founder + Chief Executive Officer",
+            "current_job_start": "Jun-22",
+            "time_in_current_role": "3 years",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Seed",
+            "curr_startup_info": "LYRO Robotics builds and deploys intelligent pick and pack robotic systems using computer vision and deep learning for the food industry.",
+            "curr_startup_industry": "Industrials",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Co-Founder + Chief Operating Officer",
+                    "startup": "LYRO Robotics",
+                    "startup_length": "2 years 10 months"
+                },
+                {
+                    "title": "Chief Investigator - Australian Research Council\u0092s (ARC) Industrial Transformation Training Centre",
+                    "startup": "Monash University",
+                    "startup_length": "3 years 11 months"
+                },
+                {
+                    "title": "Chief Investigator and Program Leader in Human Interaction at QUT Centre for Robotics (QUT)",
+                    "startup": "Australian Centre for Robotic Vision",
+                    "startup_length": "1 month"
+                }
+            ],
+            "top_degree": "Doctor of Philosophy (Ph.D.), Human-Robot Interaction",
+            "top_degree_label": "PhD",
+            "top_degree_end_date": "2018",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 6162
+        },
+        {
+            "name": "Jessy Wu",
+            "linkedin_url": "https://www.linkedin.com/in/jessyzwu/",
+            "city": "Sydney",
+            "current_company": "Encour",
+            "current_title": "Founder and Managing Director",
+            "current_job_start": "Jul-24",
+            "time_in_current_role": "11 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Encour is a strategic communications agency that helps startups control their narrative through storytelling and media relations.",
+            "curr_startup_industry": "B2B",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor of Philosophy (PhB) , Bachelor of Philosophy (Hons I)",
+            "top_degree_label": "Bachelors",
+            "top_degree_end_date": "2017",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "female",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 557
+        },
+        {
+            "name": "Dan Brockwell",
+            "linkedin_url": "https://www.linkedin.com/in/danbrockwell/",
+            "city": "Sydney",
+            "current_company": "Earlywork",
+            "current_title": "Co-Founder",
+            "current_job_start": "Sep-20",
+            "time_in_current_role": "4 years 9 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Seed",
+            "curr_startup_info": "Earlywork provides free sales education and career transition support to help Australians secure sales roles with top employers.",
+            "curr_startup_industry": "Education",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "False",
+            "top_degree": "Bachelor\u0092s Degree, Computer Science / Commerce (Marketing)",
+            "top_degree_label": "Bachelors",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "True",
+            "scaleups_worked_in": [
+                "Atlassian"
+            ],
+            "was_in_bigtech": "True",
+            "bigtechs_worked_in": [
+                "Amazon",
+                "Uber",
+                "IBM"
+            ],
+            "gender": "male",
+            "migrant": "False",
+            "is_stealth": "False",
+            "linkedin_follower_count": 16031
+        },
+        {
+            "name": "Utkarsh Manocha",
+            "linkedin_url": "https://www.linkedin.com/in/utkarshmanocha/",
+            "city": "Sydney",
+            "current_company": "Grad Careers",
+            "current_title": "Founder",
+            "current_job_start": "Sep-22",
+            "time_in_current_role": "2 years 9 months",
+            "is_current_founder": "True",
+            "curr_startup_funding_stage": "Bootstrapped",
+            "curr_startup_info": "Grad Careers assists graduate job seekers and international students in Australia with job search strategies, LinkedIn training, and interview preparation.",
+            "curr_startup_industry": "Education",
+            "ai_in_curr_startup": "False",
+            "was_prev_founder": "True",
+            "all_founded_companies": [
+                {
+                    "title": "Founder",
+                    "startup": "GreenGrape Solar",
+                    "startup_length": "1 year 3 months"
+                }
+            ],
+            "top_degree": "Masters degree, Finance",
+            "top_degree_label": "Masters",
+            "top_degree_end_date": "2017",
+            "was_in_accelerator": "False",
+            "was_in_scaleup": "False",
+            "was_in_bigtech": "False",
+            "gender": "male",
+            "migrant": "True",
+            "is_stealth": "False",
+            "linkedin_follower_count": 484
+        }
+    ]
+}

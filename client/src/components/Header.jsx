@@ -14,9 +14,6 @@ export default function Header() {
                             <a className="nav-link active" href="/search">Search</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/stats">Statistics</a>
-                        </li>
-                        <li className="nav-item">
                             <a className="nav-link" href="/about">About</a>
                         </li>
                     </ul>
