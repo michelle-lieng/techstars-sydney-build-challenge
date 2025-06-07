@@ -9,7 +9,6 @@ export default function Home() {
                         <p className="mb-4 text-center">Our searchable database helps you discover diverse talent that's building the next wave of innovation - from scale-up veterans to PhD researchers with IP ready to spin out.</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-center">
                             <a href="/search" className="btn btn-primary btn-lg px-4 me-md-2">Start Searching</a>
-                            <a href="/stats" className="btn btn-outline-primary btn-lg px-4">View Statistics</a>
                         </div>
                     </div>
                 </div>

@@ -25,9 +25,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Nathan Hu",
@@ -59,9 +58,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Pankrit Jindal",
@@ -91,9 +89,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Satya Borgohain",
@@ -114,9 +111,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Jamie Hall",
@@ -142,7 +138,7 @@
                 "Google"
             ],
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 3623
         },
@@ -170,7 +166,7 @@
                 "Google"
             ],
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 56
         },
@@ -195,7 +191,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 1024
         },
@@ -224,9 +220,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Rohan Agarwal",
@@ -259,9 +254,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "True",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "True"
         },
         {
             "name": "Simran Nandan",
@@ -283,9 +277,8 @@
                 "IBM"
             ],
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Henry Badgery",
@@ -325,7 +318,7 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 354
         },
@@ -357,9 +350,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "True",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "True"
         },
         {
             "name": "Andrew Suryanto",
@@ -389,9 +381,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Becca Williams",
@@ -414,9 +405,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Jacky Koh",
@@ -441,7 +431,7 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 27173
         },
@@ -479,7 +469,7 @@
             ],
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 69
         },
@@ -511,9 +501,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Isabelle De Backer",
@@ -536,9 +525,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Mas Abdi",
@@ -568,7 +556,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 47
         },
@@ -590,9 +578,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Sam Elderfield",
@@ -609,9 +596,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Adam Ma",
@@ -637,7 +623,7 @@
                 "Microsoft"
             ],
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 405
         },
@@ -663,9 +649,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Tiffany Guan",
@@ -699,7 +684,7 @@
                 "IBM"
             ],
             "gender": "female",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 506
         },
@@ -721,9 +706,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Meryl Johnston",
@@ -763,9 +747,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Prem Naraindas",
@@ -788,9 +771,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "True",
+            "is_stealth": "False"
         },
         {
             "name": "Will Ashford",
@@ -813,7 +795,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 1047
         },
@@ -850,9 +832,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Charlie Gearside",
@@ -900,7 +881,7 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 38679
         },
@@ -927,9 +908,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Tim Doyle",
@@ -955,7 +935,7 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 38679
         },
@@ -982,9 +962,8 @@
                 "Google"
             ],
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Tom Alder",
@@ -1010,9 +989,8 @@
             ],
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Matthew Smith",
@@ -1035,7 +1013,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 387
         },
@@ -1066,7 +1044,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 4999
         },
@@ -1098,9 +1076,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Kiet Tran",
@@ -1129,9 +1106,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "True",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "True"
         },
         {
             "name": "Kevin Zheng",
@@ -1163,9 +1139,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Kristi Knaack Riordan",
@@ -1202,7 +1177,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 3282
         },
@@ -1243,7 +1218,7 @@
                 "IBM"
             ],
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 13853
         },
@@ -1274,9 +1249,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Alice Williams",
@@ -1296,9 +1270,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Ebon Bokody",
@@ -1321,7 +1294,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 5017
         },
@@ -1353,7 +1326,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 5140
         },
@@ -1377,9 +1350,8 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
-            "is_stealth": "False",
-            "linkedin_follower_count": 0
+            "migrant": "False",
+            "is_stealth": "False"
         },
         {
             "name": "Nicole Robinson",
@@ -1419,7 +1391,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 6162
         },
@@ -1444,7 +1416,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "female",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 557
         },
@@ -1476,7 +1448,7 @@
                 "IBM"
             ],
             "gender": "male",
-            "migrant": "FALSE",
+            "migrant": "False",
             "is_stealth": "False",
             "linkedin_follower_count": 16031
         },
@@ -1508,7 +1480,7 @@
             "was_in_scaleup": "False",
             "was_in_bigtech": "False",
             "gender": "male",
-            "migrant": "TRUE",
+            "migrant": "True",
             "is_stealth": "False",
             "linkedin_follower_count": 484
         }

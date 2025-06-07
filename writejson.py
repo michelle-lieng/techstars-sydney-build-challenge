@@ -24,11 +24,12 @@ def single_to_double_quotes(obj):
 
 def convert_csv_to_json(csv_path, json_path):
     founders = []
-    def safe_int(value, default=0):
+    def safe_int(value, default=None):
         try:
             return int(value)
         except (ValueError, TypeError):
             return default
+        
     def parse_list_of_dicts(s):
         if not s or s.strip() == "":
             return []
@@ -91,9 +92,9 @@ def convert_csv_to_json(csv_path, json_path):
             add_if_value("was_in_bigtech", fix_bool_string(row.get("was_in_big_tech", "False")))
             add_if_value("bigtechs_worked_in", parse_list(row.get("bigtechs_worked_in", "")))
             add_if_value("gender", row.get("gender"))
-            add_if_value("migrant", row.get("migrant"))
+            add_if_value("migrant", fix_bool_string(row.get("migrant")))
             add_if_value("is_stealth", fix_bool_string(row.get("is_stealth", "False")))
-            add_if_value("linkedin_follower_count", safe_int(row.get("linkedin_follower_count", 0)))
+            add_if_value("linkedin_follower_count", safe_int(row.get("linkedin_follower_count")))
 
             founders.append(founder)
 
