@@ -4,9 +4,13 @@ from MySQLdb.cursors import DictCursor
 import json
 from datetime import datetime
 from createTags import createTags
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 class FounderProfileDB:
-    def __init__(self, app=None, host="localhost", user="root", password="", database="founder_db"):
+    def __init__(self, app=None, host=os.getenv("DB_HOST"), user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"), database=os.getenv("DB_NAME")):
         self.app = app
         self.mysql = None
         self.host = host

@@ -7,7 +7,7 @@ from datetime import datetime
 
 load_dotenv()
 
-mysqlPass = os.getenv('MYSQL_PASSWORD')
+mysqlPass = os.getenv('DB_PASSWORD')
 
 app = Flask(__name__)
 stealthDb = FounderProfileDB(app=app, password=mysqlPass)

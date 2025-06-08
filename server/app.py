@@ -1,12 +1,12 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from mysqlSchema import FounderProfileDB
 
 load_dotenv()
 
-mysqlPass = os.getenv('MYSQL_PASSWORD')
+mysqlPass = os.getenv('DB_PASSWORD')
 
 app = Flask(__name__)
 CORS(app)
@@ -118,5 +118,15 @@ def addFounder():
         print(f"Failed to insert founder {founder.get('name', '[unknown]')}: {e}")
         return jsonify({"error": f"Failed to insert founder: {str(e)}"}), 500
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    if path != "" and os.path.exists(os.path.join('../client/dist', path)):
+        return send_from_directory('../client/dist', path)
+    else:
+        # Return index.html for React Router to handle
+        return send_from_directory('../client/dist', 'index.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True, host="0.0.0.0", port=5000)
+
