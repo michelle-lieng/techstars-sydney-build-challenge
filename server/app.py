@@ -29,10 +29,12 @@ def getData():
             'city': request.args.get('city'),
             'startup_name': request.args.get('startup'),
             'gender': request.args.get('gender'),
+            'current_title': request.args.get('current_title'),
             'ethnicity': request.args.get('ethnicity'),
             'migrant': request.args.get('migrant'),
-	    'founder_persona': request.args.get('founder_persona'),
-            'curr_startup_industry': request.args.get('curr_startup_industry')
+            'founder_persona': request.args.get('founder_persona'),
+            'curr_startup_industry': request.args.get('curr_startup_industry'),
+            'curr_startup_funding_stage': request.args.get('curr_startup_funding_stage')
         }
 
         tags = request.args.getlist('tags')

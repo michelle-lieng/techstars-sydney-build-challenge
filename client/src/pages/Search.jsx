@@ -3,6 +3,7 @@ import FounderCard  from '../components/FounderCard';
 import GenderDropdown from '../components/GenderDropdown';
 import IndustryTagsDropdown from '../components/IndustryDropdown';
 import PersonaTagsDropdown from '../components/PersonaDropdown';
+import FundingTagsDropdown from '../components/FundingDropdown';
 import TagsDropdown from '../components/Tags';
 import MigrantDropdown from '../components/Migrant';
 import Pagination from '../components/Pagination';
@@ -30,6 +31,7 @@ export default function Search() {
     const [tagsFilter, setTagsFilter] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [industryFilter, setIndustryFilter] = useState('');
+    const [fundingFilter, setFundingFilter] = useState('');
     const [personaFilter, setPersonaFilter] = useState('');
     const [sortBy, setSortBy] = useState('name');
     const foundersPerPage = 10;
@@ -62,6 +64,7 @@ export default function Search() {
         setTagsFilter([]);
         setIndustryFilter('');
         setPersonaFilter('');
+        setFundingFilter('');
     };
 
     useEffect(() => {
@@ -87,6 +90,7 @@ export default function Search() {
         if (migrantFilter) params.append('migrant', migrantFilter);
         if (personaFilter) params.append('founder_persona', personaFilter);
         if (industryFilter) params.append('curr_startup_industry', industryFilter);
+        if (fundingFilter) params.append('curr_startup_funding_stage', fundingFilter)
 
         if (tagsFilter.length > 0) {
             tagsFilter.forEach(tag => params.append('tags', tag)); 
@@ -111,7 +115,7 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter, tagsFilter, personaFilter, industryFilter]);
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter, tagsFilter, personaFilter, industryFilter, fundingFilter]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -201,7 +205,12 @@ export default function Search() {
                                         value={industryFilter}
                                         onChange={setIndustryFilter}
                                     />
-                                    
+
+                                    <FundingTagsDropdown
+                                        value={fundingFilter}
+                                        onChange={setFundingFilter}
+                                    />
+
                                     <hr/>
 
                                     <h6 className="mb-3">Diversity Filters</h6>

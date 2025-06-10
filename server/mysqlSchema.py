@@ -318,6 +318,10 @@ class FounderProfileDB:
                 if 'curr_startup_industry' in filters:
                     query += " AND curr_startup_industry = %s"
                     params.append(filters['curr_startup_industry'])
+                
+                if 'curr_startup_funding_stage' in filters:
+                    query += " AND curr_startup_funding_stage = %s"
+                    params.append(filters['curr_startup_funding_stage'])
 
                 # Tags filter (assumes list of tags and checks overlap)
                 if 'tags' in filters and filters['tags']:
