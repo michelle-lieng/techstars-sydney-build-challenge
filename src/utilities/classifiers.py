@@ -21,3 +21,7 @@ ACCELERATORS = {
     "H2 Ventures", "Spiral Blue", "Stone & Chalk", "Tank Stream Labs",
     "MAP", "Slingshot", "Austrade Landing Pads", "Build Club", "The Builders Club"
 }
+
+STEALTH_MODE = {
+    "stealth startup", "stealth", "stealthstealth"
+}
