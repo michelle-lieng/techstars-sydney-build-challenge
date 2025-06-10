@@ -17,20 +17,20 @@ def extract_top_education_info(entries: List[dict]) -> Optional[dict]:
 
         # Bachelor's level
         "bachelor": 1, "b.sc": 1, "bsc": 1, "beng": 1, "b.eng": 1, "ba": 1,
-        "b.a": 1, "undergraduate": 1,
+        "b.a": 1, "undergraduate": 1, "B.S":1, "b.s.":1, "b.s":1,
 
-        # Non-traditional / bootcamps
-        "diploma": 0, "cert iv": 0, "certificate": 0, "certification": 0,
-        "short course": 0, "bootcamp": 0, "nanodegree": 0, "microcredential": 0,
-        "udemy": 0, "coursera": 0, "edx": 0, "general assembly": 0
+        # # Non-traditional / bootcamps
+        # "diploma": 0, "cert iv": 0, "certificate": 0, "certification": 0,
+        # "short course": 0, "bootcamp": 0, "nanodegree": 0, "microcredential": 0,
+        # "udemy": 0, "coursera": 0, "edx": 0, "general assembly": 0
     }
 
     degree_label = {
         3: "PhD",
         2: "Masters",
         1: "Bachelors",
-        0: "Non-traditional",
-        -1: "Unknown"
+        # 0: "Non-traditional",
+        # -1: "Unknown"
     }
 
     def categorize(degree: Optional[str]) -> int:
