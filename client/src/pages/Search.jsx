@@ -190,7 +190,7 @@ export default function Search() {
 
                                     <hr/>
 
-                                    <h6 className="mb-3">Startup Filters</h6>
+                                    <h6 className="mb-3">Current Startup Filters</h6>
 
                                     <div className="mb-3">
                                         <label htmlFor="search-startup" className="form-label">Startup Name</label>

@@ -156,7 +156,7 @@ export default function FounderProfile() {
                         {hasValue(founderData.curr_startup_info) && (
                             <span className="d-block mt-2">{founderData.curr_startup_info}</span>
                         )}
-                        {hasValue(founderData.curr_startup_url) && (
+                        {hasValue(founderData.curr_startup_url)  && founderData.curr_startup_url !== "Invalid" && (
                             <div className="d-block small text-truncate mt-2">
                                 <span className="text-muted">URL: </span>
                                 <a 
