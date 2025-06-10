@@ -50,6 +50,7 @@ for founder in founders:
             top_degree=founder.get('top_degree'),
             top_degree_label=founder.get('top_degree_label'),
             top_degree_end_date=founder.get("top_degree_end_date"),
+            top_institution=founder.get("top_institution"),
             was_in_accelerator=parse_bool(founder.get('was_in_accelerator', False)),
             accelerators_worked_in=founder.get('accelerators_worked_in'),
             was_in_scaleup=parse_bool(founder.get('was_in_scaleup', False)),
@@ -59,7 +60,8 @@ for founder in founders:
             gender=founder.get('gender'),
             migrant=founder.get('migrant', False),
             is_stealth=parse_bool(founder.get('is_stealth', False)),
-            linkedin_follower_count=founder.get('linkedin_follower_count')
+            linkedin_follower_count=founder.get('linkedin_follower_count'),
+            founder_persona=founder.get('founder_persona')
         )
     except Exception as e:
         print(f"Failed to insert founder {founder.get('name')}: {e}")
