@@ -118,7 +118,7 @@ def bing_funding_info(startup_name: str, founder_name: str, current_job_start_da
 ############## NOW WE HAVE TO USE GEMINI TO GET ACTUAL INFO FROM FUNDING INFO!
 # Rank mapping of funding stages
 round_rank = {
-    "idea": 0,
+    #"idea": 0,
     "bootstrapped": 0,
     "pre seed": 1,
     "seed": 2,
