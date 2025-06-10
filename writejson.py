@@ -100,4 +100,4 @@ def convert_csv_to_json(csv_path, json_path):
         json.dump({"founders": founders}, jsonfile, indent=4)
 
 # Example usage
-convert_csv_to_json("linkedin_processed_send_b.csv", "founders.json")
+convert_csv_to_json("founders.csv", "founders.json")
