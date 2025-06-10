@@ -124,8 +124,8 @@ export default function FounderProfile() {
                         <h6 className="text-uppercase text-muted small">Current Role</h6>
                         <p className="mb-0">
                         {hasValue(founderData.current_title) && founderData.current_title}
-                        {hasValue(founderData.current_title) && hasValue(founderData.current_company) && ' at '}
-                        {hasValue(founderData.current_company) && founderData.current_company}
+                        {founderData.current_title !== "Unemployed" &&hasValue(founderData.current_title) && hasValue(founderData.current_company) && ' at '}
+                        {founderData.current_title !== "Unemployed" &&hasValue(founderData.current_company) && founderData.current_company}
                         {hasValue(founderData.current_job_start) && (
                             <span className="text-muted d-block small">
                             Since {formatDate(founderData.current_job_start)}
@@ -134,42 +134,51 @@ export default function FounderProfile() {
                         </p>
                     </div>
                     )}
-                    
-                    {/* Current Startup - Only show if is_current_founder is true */}
-                    {founderData.is_current_founder === 1 && (
+
+                    {/* Founder Persona */}
+                    {hasValue(founderData.founder_persona) && (
                     <div className="mb-3">
-                        <h6 className="text-uppercase text-muted small">Startup</h6>
+                        <h6 className="text-uppercase text-muted small">Founder Persona</h6>
                         <p className="mb-0">
-                        {hasValue(founderData.current_company) && (
-                            <strong>{founderData.current_company}</strong>
-                        )}
-                        {hasValue(founderData.curr_startup_funding_stage) && (
-                            <span className="d-block small">
-                            {founderData.curr_startup_funding_stage} stage
-                            </span>
-                        )}
-                        {hasValue(founderData.curr_startup_url) && (
-                            <a 
-                            href={founderData.curr_startup_url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="d-block small text-truncate"
-                            >
-                            {founderData.curr_startup_url}
-                            </a>
-                        )}
-                        {hasValue(founderData.curr_startup_info) && (
-                            <span className="d-block mt-2">{founderData.curr_startup_info}</span>
-                        )}
-                        {(hasValue(founderData.linkedin_follower_count)) && (
-                            <span className="d-block small">
-                                {founderData.linkedin_follower_count}
-                            </span>
-                        )}
+                        {founderData.founder_persona}
                         </p>
                     </div>
                     )}
                     
+                    {/* Current Startup - Only show if is_current_founder is true */}
+                    {founderData.is_current_founder === 1 && (
+                    <div className="mb-3">
+                        <h6 className="text-uppercase text-muted small">Current Startup</h6>
+                        <p className="mb-0">
+                        {hasValue(founderData.current_company) && (
+                            <strong>{founderData.current_company}</strong>
+                        )}
+                        {hasValue(founderData.curr_startup_info) && (
+                            <span className="d-block mt-2">{founderData.curr_startup_info}</span>
+                        )}
+                        {hasValue(founderData.curr_startup_url) && (
+                            <div className="d-block small text-truncate mt-2">
+                                <span className="text-muted">URL: </span>
+                                <a 
+                                    href={founderData.curr_startup_url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: "underline" }}
+                                >
+                                    {founderData.curr_startup_url}
+                                </a>
+                            </div>
+                        )}
+                        {hasValue(founderData.linkedin_follower_count) && (
+                            <div className="d-block small text-truncate">
+                                <span className="text-muted">Follower Count: </span>
+                                {founderData.linkedin_follower_count}
+                            </div>
+                        )}
+                        </p>
+                    </div>
+                    )}
+
                     {/* Industry Focus */}
                     {hasValue(founderData.curr_startup_industry) && (
                     <div className="mb-3">
@@ -179,6 +188,16 @@ export default function FounderProfile() {
                         {founderData.ai_in_curr_startup === 1 && (
                             <span className="badge bg-info ms-2">AI</span>
                         )}
+                        </p>
+                    </div>
+                    )}
+
+                    {/* Funding Stage */}
+                    {hasValue(founderData.curr_startup_funding_stage) && (
+                    <div className="mb-3">
+                        <h6 className="text-uppercase text-muted small">Funding Stage</h6>
+                        <p className="mb-0">
+                        {founderData.curr_startup_funding_stage}
                         </p>
                     </div>
                     )}

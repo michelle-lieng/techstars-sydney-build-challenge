@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import FounderCard  from '../components/FounderCard';
 import GenderDropdown from '../components/GenderDropdown';
+import IndustryTagsDropdown from '../components/IndustryDropdown';
+import PersonaTagsDropdown from '../components/PersonaDropdown';
 import TagsDropdown from '../components/Tags';
 import MigrantDropdown from '../components/Migrant';
 import Pagination from '../components/Pagination';
@@ -15,6 +17,7 @@ import {
 export default function Search() {
     const [debouncedNameFilter, setDebouncedNameFilter] = useState('');
     const [debouncedStartupFilter, setDebouncedStartupFilter] = useState('');
+    const [debouncedCityFilter, setDebouncedCityFilter] = useState('');
     const [founders, setFounders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -26,12 +29,28 @@ export default function Search() {
     const [migrantFilter, setMigrantFilter] = useState('');
     const [tagsFilter, setTagsFilter] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [industryFilter, setIndustryFilter] = useState('');
+    const [personaFilter, setPersonaFilter] = useState('');
+    const [sortBy, setSortBy] = useState('name');
     const foundersPerPage = 10;
 
     const indexOfLastFounder = currentPage * foundersPerPage;
     const indexOfFirstFounder = indexOfLastFounder - foundersPerPage;
-    const currentFounders = founders.slice(indexOfFirstFounder, indexOfLastFounder);
-
+    // const currentFounders = founders.slice(indexOfFirstFounder, indexOfLastFounder);
+    
+    let sortedFounders = [...founders];
+    if (sortBy === 'city') {
+    // sortedFounders.sort((a, b) => (a.city || '').localeCompare(b.city || ''));
+    sortedFounders.sort((a, b) => {
+        if (!a.city && b.city) return 1;   // a is blank, b is not: a after b
+        if (a.city && !b.city) return -1;  // a is not blank, b is: a before b
+        return (a.city || '').localeCompare(b.city || '');
+    });
+    } else if (sortBy === 'name') {
+    sortedFounders.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    }
+    const currentFounders = sortedFounders.slice(indexOfFirstFounder, indexOfLastFounder);
+    
     const totalPages = Math.ceil(founders.length / foundersPerPage);
     
     const resetFilters = () => {
@@ -41,12 +60,14 @@ export default function Search() {
         setGenderFilter('');
         setMigrantFilter('');
         setTagsFilter([]);
+        setIndustryFilter('');
+        setPersonaFilter('');
     };
 
     useEffect(() => {
         if (highestDegreeFilter) {
             setTagsFilter((prevTags) => {
-                const degreeTags = ['Bachelor', 'Masters', 'PhD'];
+                const degreeTags = ['Bachelors', 'Masters', 'PhD'];
                 const filteredTags = prevTags.filter(tag => !degreeTags.includes(tag));
 
                 return [...filteredTags, highestDegreeFilter];
@@ -64,7 +85,9 @@ export default function Search() {
         if (startupFilter) params.append('startup', startupFilter);
         if (genderFilter) params.append('gender', genderFilter);
         if (migrantFilter) params.append('migrant', migrantFilter);
-        
+        if (personaFilter) params.append('founder_persona', personaFilter);
+        if (industryFilter) params.append('curr_startup_industry', industryFilter);
+
         if (tagsFilter.length > 0) {
             tagsFilter.forEach(tag => params.append('tags', tag)); 
         }
@@ -88,16 +111,17 @@ export default function Search() {
             setError(error);
             setLoading(false);
         });
-    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter, tagsFilter]);
+    }, [nameFilter, cityFilter, startupFilter, genderFilter, migrantFilter, tagsFilter, personaFilter, industryFilter]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setDebouncedNameFilter(nameFilter);
             setDebouncedStartupFilter(startupFilter);
+            setDebouncedCityFilter(cityFilter);
         }, 5000);
         
         return () => clearTimeout(timer);
-    }, [nameFilter, startupFilter]);
+    }, [nameFilter, startupFilter, cityFilter]);
 
     useEffect(() => {
     if (!loading && founders.length > 0) {
@@ -129,6 +153,9 @@ export default function Search() {
                             </div>
                             <div className="card-body">
                                 <form id="search-form" onSubmit={(e) => e.preventDefault()}>
+
+                                    <h6 className="mb-3">Founder Filters</h6>
+
                                     <div className="mb-3">
                                         <label htmlFor="search-name" className="form-label">Name</label>
                                         <input type="text" className="form-control" id="search-name" placeholder="Enter name" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
@@ -136,14 +163,14 @@ export default function Search() {
                                     
                                     <div className="mb-3">
                                         <label htmlFor="search-city" className="form-label">City</label>
-                                        <select className="form-select" id="search-city" value={cityFilter} onChange={(e) => setCityFilter(e.target.value)}>
-                                        </select>
+                                        <input type='text' className="form-control" id="search-city" placeholder="Enter city" value={cityFilter} onChange={(e) => setCityFilter(e.target.value)}>
+                                        </input>
                                     </div>
-                                    
-                                    <div className="mb-3">
-                                        <label htmlFor="search-startup" className="form-label">Startup Name</label>
-                                        <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name" value={startupFilter} onChange={(e) => setStartupFilter(e.target.value)}/>
-                                    </div>
+
+                                    <PersonaTagsDropdown
+                                        value={personaFilter}
+                                        onChange={setPersonaFilter}
+                                    />
 
                                     <div className="mb-3">
                                         <label htmlFor="search-degree" className="form-label">Highest Level Degree</label>
@@ -153,8 +180,6 @@ export default function Search() {
                                         />
                                     </div>  
                                     
-                                    <hr/>
-
                                     <div className="mb-3">
                                         <label className="form-label">Tags</label>
                                         <TagsDropdown
@@ -162,9 +187,23 @@ export default function Search() {
                                             onChange={setTagsFilter}
                                         />
                                     </div>
+
+                                    <hr/>
+
+                                    <h6 className="mb-3">Startup Filters</h6>
+
+                                    <div className="mb-3">
+                                        <label htmlFor="search-startup" className="form-label">Startup Name</label>
+                                        <input type="text" className="form-control" id="search-startup" placeholder="Enter startup name" value={startupFilter} onChange={(e) => setStartupFilter(e.target.value)}/>
+                                    </div>
+
+                                    <IndustryTagsDropdown
+                                        value={industryFilter}
+                                        onChange={setIndustryFilter}
+                                    />
                                     
                                     <hr/>
-                                    
+
                                     <h6 className="mb-3">Diversity Filters</h6>
                                     
                                     <GenderDropdown
@@ -197,9 +236,15 @@ export default function Search() {
                                 <h5 className="card-title mb-0">Results <span id="result-count" className="badge bg-primary ms-2">{ founders.length }</span></h5>
                                 <div className="d-flex align-items-center">
                                     <label htmlFor="sort-by" className="form-label me-2 mb-0">Sort by:</label>
-                                    <select className="form-select form-select-sm" id="sort-by" style={{ width: 'auto' }}>
-                                        <option value="name">Default</option>
-                                        <option value="city">Name</option>
+                                    <select 
+                                        className="form-select form-select-sm"
+                                        id="sort-by"
+                                        style={{ width: 'auto' }}
+                                        value={sortBy}
+                                        onChange={e => setSortBy(e.target.value)}>
+                                        {/* <option>Default</option> */}
+                                        <option value="name">Name</option>
+                                        <option value="city">City</option>
                                     </select>
                                 </div>
                             </div>
