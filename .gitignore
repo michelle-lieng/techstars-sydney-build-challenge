@@ -7,6 +7,7 @@ server/mysqlSchema_local.py
 server/app_local.py
 example_linkedin_download.html
 client/vite.config_local.js
+founders_working.json
 founders.csv
 # C extensions
 *.so

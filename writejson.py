@@ -76,7 +76,12 @@ def convert_csv_to_json(csv_path, json_path):
             add_if_value("curr_startup_url", row.get("startup_url"))
             add_if_value("curr_startup_info", row.get("startup_info"))
             add_if_value("curr_startup_industry", row.get("startup_industry"))
-            add_if_value("ai_in_curr_startup", fix_bool_string(row.get("ai_in_product_identity", "False")))
+            # add_if_value("ai_in_curr_startup", fix_bool_string(row.get("ai_in_product_identity", "False")))
+            ai_val = row.get("ai_in_product_identity")
+            if str(ai_val).strip() == "1":
+                add_if_value("ai_in_curr_startup", "True")
+            else:
+                add_if_value("ai_in_curr_startup", "False")
             add_if_value("was_prev_founder", fix_bool_string(row.get("was_founder_before", "False")))
             add_if_value("all_founded_companies", parse_list_of_dicts(row.get("founder_companies", "")))
             add_if_value("top_degree", row.get("top_degree"))
