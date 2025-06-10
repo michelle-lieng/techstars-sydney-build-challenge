@@ -30,7 +30,9 @@ def getData():
             'startup_name': request.args.get('startup'),
             'gender': request.args.get('gender'),
             'ethnicity': request.args.get('ethnicity'),
-            'migrant': request.args.get('migrant')
+            'migrant': request.args.get('migrant'),
+	    'founder_persona': request.args.get('founder_persona'),
+            'curr_startup_industry': request.args.get('curr_startup_industry')
         }
 
         tags = request.args.getlist('tags')

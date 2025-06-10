@@ -96,6 +96,7 @@ class FounderProfileDB:
                     top_degree VARCHAR(255),
                     top_degree_label VARCHAR(50),
                     top_degree_end_date VARCHAR(50),
+                    top_institution VARCHAR(100),
                     was_in_accelerator BOOLEAN,
                     accelerators_worked_in JSON,
                     was_in_scaleup BOOLEAN,
@@ -107,6 +108,7 @@ class FounderProfileDB:
                     tags JSON,
                     is_stealth BOOLEAN,
                     linkedin_follower_count INT,
+                    founder_persona VARCHAR(50),
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                 ) ENGINE=InnoDB;
@@ -123,15 +125,15 @@ class FounderProfileDB:
     def insertFounder(self, name, linkedin_url=None, city=None, current_company=None, 
                       current_title=None, current_job_start=None, time_in_current_role=None, is_current_founder=False, curr_startup_funding_stage=None, 
                       curr_startup_url=None, curr_startup_info=None, curr_startup_industry=None, ai_in_curr_startup=None,
-                      was_prev_founder=False, all_founded_companies=None, top_degree=None, top_degree_label=None, top_degree_end_date=None,
+                      was_prev_founder=False, all_founded_companies=None, top_degree=None, top_degree_label=None, top_degree_end_date=None, top_institution=None,
                       was_in_accelerator=False, accelerators_worked_in=None, was_in_scaleup=False, scaleups_worked_in=None, was_in_bigtech=False,
-                      bigtechs_worked_in=None, gender=None, migrant=False, is_stealth=False, linkedin_follower_count=0):
+                      bigtechs_worked_in=None, gender=None, migrant=False, is_stealth=False, linkedin_follower_count=0, founder_persona=None):
         with self.app.app_context():
             try:
                 cursor = self.mysql.connection.cursor()
                 tags = createTags(is_current_founder=is_current_founder, ai_in_curr_startup=ai_in_curr_startup, was_prev_founder=was_prev_founder,
                                   top_degree_label=top_degree_label,was_in_accelerator=was_in_accelerator, was_in_scaleup=was_in_scaleup,
-                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant, is_stealth=is_stealth)
+                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant, is_stealth=is_stealth, gender=gender)
 
                 all_founded_companies__json = json.dumps(all_founded_companies) if all_founded_companies else None
                 accelerators_worked_in__json = json.dumps(accelerators_worked_in) if accelerators_worked_in else None
@@ -144,16 +146,16 @@ class FounderProfileDB:
                 INSERT INTO founder_profile (
                     name, linkedin_url, city, current_company, current_title, current_job_start, time_in_current_role, is_current_founder, curr_startup_funding_stage,
                     curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies,
-                    top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in, was_in_scaleup, scaleups_worked_in,
-                    was_in_bigtech, bigtechs_worked_in, gender, migrant, tags, is_stealth, linkedin_follower_count
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    top_degree, top_degree_label, top_degree_end_date, top_institution, was_in_accelerator, accelerators_worked_in, was_in_scaleup, scaleups_worked_in,
+                    was_in_bigtech, bigtechs_worked_in, gender, migrant, tags, is_stealth, linkedin_follower_count, founder_persona
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
 
                 values = (
                     name, linkedin_url, city, current_company, current_title, current_job_start, time_in_current_role, is_current_founder, curr_startup_funding_stage,
                     curr_startup_url, curr_startup_info, curr_startup_industry, ai_in_curr_startup, was_prev_founder, all_founded_companies__json,
-                    top_degree, top_degree_label, top_degree_end_date, was_in_accelerator, accelerators_worked_in__json, was_in_scaleup, scaleups_worked_in__json,
-                    was_in_bigtech, bigtechs_worked_in__json, gender, migrant, tags_json, is_stealth, linkedin_follower_count
+                    top_degree, top_degree_label, top_degree_end_date, top_institution, was_in_accelerator, accelerators_worked_in__json, was_in_scaleup, scaleups_worked_in__json,
+                    was_in_bigtech, bigtechs_worked_in__json, gender, migrant, tags_json, is_stealth, linkedin_follower_count, founder_persona
                 )
 
                 cursor.execute(insert_query, values)
@@ -290,8 +292,8 @@ class FounderProfileDB:
 
                 # City filter
                 if 'city' in filters:
-                    query += " AND city = %s"
-                    params.append(filters['city'])
+                    query += " AND city LIKE %s"
+                    params.append(f"%{filters['city']}%")
 
                 # Startup name filter (only if current founder)
                 if 'startup_name' in filters:
@@ -307,6 +309,15 @@ class FounderProfileDB:
                 if 'migrant' in filters:
                     query += " AND migrant = %s"
                     params.append(filters['migrant'])
+                
+                # founder persona (expects certain values)
+                if 'founder_persona' in filters:
+                    query += " AND founder_persona = %s"
+                    params.append(filters['founder_persona'])
+
+                if 'curr_startup_industry' in filters:
+                    query += " AND curr_startup_industry = %s"
+                    params.append(filters['curr_startup_industry'])
 
                 # Tags filter (assumes list of tags and checks overlap)
                 if 'tags' in filters and filters['tags']:
