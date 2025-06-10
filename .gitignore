@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 founders.json
+server/mysqlSchema_local.py
+server/app_local.py
+example_linkedin_download.html
+client/vite.config_local.js
+founders.csv
 # C extensions
 *.so
 
