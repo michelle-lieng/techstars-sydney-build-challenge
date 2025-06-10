@@ -133,7 +133,7 @@ class FounderProfileDB:
                 cursor = self.mysql.connection.cursor()
                 tags = createTags(is_current_founder=is_current_founder, ai_in_curr_startup=ai_in_curr_startup, was_prev_founder=was_prev_founder,
                                   top_degree_label=top_degree_label,was_in_accelerator=was_in_accelerator, was_in_scaleup=was_in_scaleup,
-                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant, is_stealth=is_stealth, gender=gender)
+                                  was_in_bigtech=was_in_bigtech, is_migrant=migrant, is_stealth=is_stealth, gender=gender, current_title=current_title)
 
                 all_founded_companies__json = json.dumps(all_founded_companies) if all_founded_companies else None
                 accelerators_worked_in__json = json.dumps(accelerators_worked_in) if accelerators_worked_in else None

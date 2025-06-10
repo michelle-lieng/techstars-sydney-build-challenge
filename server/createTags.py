@@ -1,8 +1,8 @@
 def createTags(is_current_founder=False, ai_in_curr_startup=False, was_prev_founder=False, top_degree_label=None, was_in_accelerator=False,
-                was_in_scaleup=False, was_in_bigtech=False, is_migrant=False, is_stealth=False, gender=None):
+                was_in_scaleup=False, was_in_bigtech=False, is_migrant=False, is_stealth=False, gender=None, current_title=None):
     tags = []
     if (is_current_founder):
-        tags.append("Founder")
+        tags.append("Current Founder")
 
     if (was_prev_founder):
         tags.append("Previous Founder")
@@ -24,6 +24,9 @@ def createTags(is_current_founder=False, ai_in_curr_startup=False, was_prev_foun
     
     if (was_in_bigtech):
         tags.append("Worked in Big Tech")
+    
+    if current_title and current_title.strip().lower() == "unemployed":
+        tags.append("Currently Unemployed")
     
     if (is_migrant):
         tags.append("Migrant")
