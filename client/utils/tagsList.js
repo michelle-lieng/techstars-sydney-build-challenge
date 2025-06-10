@@ -1,10 +1,11 @@
 export const tags = [
     "Founder",
     "Previous Founder",
-    "AI Founder",
-    "Accelerator",
-    "Scaleup",
-    "Big Tech",
+    "AI Startup",
+    "Accelerator Participant",
+    "Female Founder",
+    "Scaleup Alumni",
+    "Worked in Big Tech",
     "Migrant",
-    "Stealth Founder"
+    "Building in Stealth"
 ]
