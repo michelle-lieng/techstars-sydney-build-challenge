@@ -187,3 +187,6 @@ __pycache__
 data
 table_view.html
 .env
+
+linkedin-scraper/output
+linkedin-scraper/profile_urls.py
