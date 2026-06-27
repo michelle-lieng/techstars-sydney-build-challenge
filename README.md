@@ -41,3 +41,14 @@ One of our biggest lessons was the importance of early planning and clear system
 Michelle focused on the process of discovering hidden founders, data scraping, extraction, and tagging, while Andy led the full-stack development, including the database, backend logic, and user interface. Since we were building in parallel, staying in sync was critical. Some fields evolved as we went, which forced us to adapt quickly and rethink parts of the architecture. It reminded us how important it is to scope well but stay flexible, especially when working with messy, real-world data.
 
 This was also our first time teaming up, and it was rewarding to see how our different skill sets came together to turn an idea into a functional product, end to end.
+
+**8. What are some possible next steps?**
+The next steps for this project would focus on expanding and refining both the dataset and the product experience. We plan to grow the database to include more hidden founders, especially from cities beyond Sydney. On the frontend, we’d like to introduce a toggle between card and table views for easier browsing and sorting. On the backend, we aim to support real-time updates to founder profiles, implement caching to improve search and filter performance, and build safeguards against invalid scrapes, especially as we move toward automating the web
+scrape–to–database pipeline.
+
+We’re exploring new ways to automate founder discovery, such as scraping likes and comments on posts from prominent Australian AI thought leaders/founders on LinkedIn, where many hidden builders engage. We're also experimenting with signals from GitHub, Discord, X/Twitter,
+and past hackathon winners to identify emerging talent.
+
+To boost data accuracy, we’ll refine our Gemini prompts and search filters. We also plan to scale our scraping pipeline using parallel Selenium, proxies, throttling, and account rotation — enabling broader, more reliable data collection while avoiding detection.
+
+Lastly, we plan to introduce a scoring system — a numeric metric to highlight hidden founders with high potential. This would help users quickly identify standout profiles without needing to manually combine multiple filters.
