@@ -1,0 +1,5 @@
+# Railway builds this service with Nixpacks. The `mysqlclient` wheel is a C
+# extension that needs the MySQL client dev headers + pkg-config at build time,
+# so we add them here. `...` keeps Nixpacks' auto-detected packages (Python, pip).
+[phases.setup]
+aptPkgs = ["...", "default-libmysqlclient-dev", "pkg-config", "build-essential"]
