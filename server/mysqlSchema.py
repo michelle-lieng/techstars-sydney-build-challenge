@@ -10,13 +10,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class FounderProfileDB:
-    def __init__(self, app=None, host=os.getenv("DB_HOST"), user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"), database=os.getenv("DB_NAME")):
+    def __init__(self, app=None, host=os.getenv("DB_HOST"), user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"), database=os.getenv("DB_NAME"), port=os.getenv("DB_PORT")):
         self.app = app
         self.mysql = None
         self.host = host
         self.user = user
         self.password = password
         self.database = database
+        self.port = int(port) if port else 3306
 
         if app is not None:
             self.initApp(app)
@@ -25,6 +26,7 @@ class FounderProfileDB:
         self.app = app
 
         app.config['MYSQL_HOST'] = self.host
+        app.config['MYSQL_PORT'] = self.port
         app.config['MYSQL_USER'] = self.user
         app.config['MYSQL_PASSWORD'] = self.password
         app.config['MYSQL_DB'] = self.database
